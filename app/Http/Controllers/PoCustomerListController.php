@@ -10,7 +10,7 @@ class PoCustomerListController extends Controller
 
 {
 
-  public function show(){
+  public function show($hannbaikai_id, $kumi_id){
       return view('po_customer_list');
   }
 
