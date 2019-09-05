@@ -40,7 +40,7 @@ Route::post('/po_check_delivery','PoCheckDeliveryController@store');
 
 //納品された商品の検品を行う画面
 Route::get('/po_check_inspection','PoCheckInspectionController@show');
-Route::get('/po_check_inspection','PoCheckInspectionController@store');
+Route::post('/po_check_inspection','PoCheckInspectionController@store');
 
 //発注書を新規に作成する画面
 Route::get('/po_create','PoCreateController@show');
@@ -54,7 +54,7 @@ Route::get('/po_details','PoDetailsController@show');
 Route::post('/po_details','PoDetailsController@edit');
 
 //保護者が購入する際に保護者、又は保育士が入力する画面
-Route::get('/po_fill_in','PoFillInController@show');
+Route::get('/po_fill_in/{hannbaikai_id?}/{kumi_id?}','PoFillInController@show');
 Route::post('/po_fill_in','PoFillInController@store');
 
 //引き渡しや、保護者入力など、一覧を表示する画面

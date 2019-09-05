@@ -23,7 +23,7 @@ class Torihikisaki extends Model
   public function getData($torihikisaki_id=null){
 
     $query = DB::table($this->table);
-    //非デフォルト
+
     if($torihikisaki_id != null) $query->where('id', $torihikisaki_id);
 
     $data = $query->get();
@@ -42,7 +42,7 @@ class Torihikisaki extends Model
     $torihikisaki->torihikisaki_name = $request->torihikisaki_name;
     $torihikisaki->denwabanngou = $request->denwabanngou;
     $torihikisaki->zyuusyo = $request->zyuusyo;
-    $torihikisaki->delete = 1;
+    $torihikisaki->delete = 0;
     // データベースにデータを追加
     $torihikisaki->save();
   }
@@ -58,8 +58,6 @@ class Torihikisaki extends Model
     $torihikisaki->torihikisaki_name = $request->torihikisaki_name;
     $torihikisaki->denwabanngou = $request->denwabanngou;
     $torihikisaki->zyuusyo = $request->zyuusyo;
-    //deleteフラグを格納
-    $torihikisaki->delete = $request->delete;
 
     $torihikisaki->save();
   }

@@ -18,12 +18,9 @@ class PoListController extends Controller
 //TODO: リロード対策
   public function show(){
 
-      // 販売会の全データを取得
-      $hannbaikai = new Hannbaikai();
-      $data = $hannbaikai->getData();
-
-
-      return view('po_list' ,['data'=>$data]);
+    $id = \App\models\Hannbaikai::select('id')->get();
+    $hannbaikai = Hannbaikai::find($id);
+      return view('po_list',['hannbaikai'=>$hannbaikai]);
   }
 
 }
