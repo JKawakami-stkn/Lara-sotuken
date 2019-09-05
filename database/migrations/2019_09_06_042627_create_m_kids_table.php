@@ -13,7 +13,7 @@ class CreateMKidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_kids', function (Blueprint $table) {
+        Schema::create('M_KIDS', function (Blueprint $table) {
 
             $table->char('KIDS_ID', 30)->nullable(false);
             $table->timestamp('CRE_DTTIME')->useCurrent();
@@ -39,6 +39,6 @@ class CreateMKidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_kids');
+        Schema::dropIfExists('M_KIDS');
     }
 }

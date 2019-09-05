@@ -13,7 +13,7 @@ class CreateMWelfaFacilTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_welfa_facil', function (Blueprint $table) {
+        Schema::create('M_WELFA_FACIL', function (Blueprint $table) {
 
             $table->char('WC_CD', 4)->nullable(false);
             $table->char('WF_CD', 4)->nullable(false);
@@ -34,6 +34,6 @@ class CreateMWelfaFacilTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_welfa_facil');
+        Schema::dropIfExists('M_WELFA_FACIL');
     }
 }

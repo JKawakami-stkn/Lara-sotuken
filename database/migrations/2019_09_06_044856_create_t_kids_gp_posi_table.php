@@ -13,7 +13,7 @@ class CreateTKidsGpPosiTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_kids_gp_posi', function (Blueprint $table) {
+        Schema::create('T_KIDS_GP_POSI', function (Blueprint $table) {
             $table->char('KIDS_ID', 30)->nullable(false);
             $table->char('WC_CD', 4)->nullable(false);
             $table->char('WF_CD', 4)->nullable(false);
@@ -37,6 +37,6 @@ class CreateTKidsGpPosiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_kids_gp_posi');
+        Schema::dropIfExists('T_KIDS_GP_POSI');
     }
 }
