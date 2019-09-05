@@ -143,16 +143,17 @@ use Illuminate\Database\Eloquent\Model;
 
   // モーダル生成
   $('.modal-trigger').on('click', function(){
+
     var target =  $(this);
+
     var hannbaikai_id = target.attr('data-hannbaikai_id');
     var kumi_id = target.attr('data-kumi_id');
     var kumi_name = target.attr('data-kumi_name');
 
-    // モダールタイトル書き換え
     $('#kumi_name').text(kumi_name);
     $("#fill_in").attr("href", "{{ action('PoFillInController@show') }}" + "/" + hannbaikai_id + "/" + kumi_id);
-    $("#customer_list").attr("href", "{{ action('PoFillInController@show') }}" + "/" + hannbaikai_id + "/" + kumi_id);
-    $("#check_delivery").attr("href", "{{ action('PoFillInController@show') }}" + "/" + hannbaikai_id + "/" + kumi_id);
+    $("#customer_list").attr("href", "{{ action('PoCustomerListController@show') }}" + "/" + hannbaikai_id + "/" + kumi_id);
+    $("#check_delivery").attr("href", "{{ action('PoCheckDeliveryController@show') }}" + "/" + hannbaikai_id + "/" + kumi_id);
 
   });
 
