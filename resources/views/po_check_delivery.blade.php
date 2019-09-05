@@ -3,8 +3,9 @@
 @section('addCSS')
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-<link type="text/css" rel="stylesheet" href="css/overall.css">
+<link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+<link type="text/css" rel="stylesheet" href="{{ asset('css/overall.css') }}">
+
 @stop
 
 @section('content')
