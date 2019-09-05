@@ -18,101 +18,105 @@ use Illuminate\Database\Eloquent\Model;
 @section('content')
     <!-- メインコンテンツ -->
     <div class="main">
-      <div class="container">
-        <!-- ページ名 -->
-        <h4 class="page-title blue-text text-lighten-3">発注書一覧</h4>
+        <div class="container">
+            <!-- ページ名 -->
+            <h4 class="page-title blue-text text-lighten-3">発注書一覧</h4>
 
-        <!-- 新規作成ボタン -->
-        <div class="add_button">
-          <a class="btn-floating btn-large waves-effect waves-light blue" href="{{ action('PoCreateController@show') }}"><i class="material-icons">add</i></a>
-        </div>
-        <p></p>
-        
-        @foreach($hannbaikai as $hannbaikaidata)
-        <?php $hannbaikumi = $hannbaikaidata->kumis;?>
-        <!-- 発注ごと -->
-        <div class="z-depth-1 blue-text order">
-
-            <div class="row">
-              <p class="col s8 order_title">{{$hannbaikaidata->hannbaikai_name}}</p>
-
-              <div class="col s4 order_button">
-                    <a class="btn-floating btn-large waves-effect waves-light green"
-                    href="{{ action('PoCheckInspectionController@show') }}" ><i class="material-icons">content_paste</i></a> 
-                    <a class="btn-floating btnz-large waves-effect waves-light red"
-                    href="{{ action('PoPrintController@show',$hannbaikaidata->id) }}" ><i class="material-icons">local_printshop</i></a>
-                </div>
-          </div>
-
-
-                    <!-- クラスごと -->
-                @foreach($hannbaikumi as $kumidata)
-                    <span>
-                        <a class="modal-trigger" href="#{{$hannbaikaidata->hannbaikai_name}}">
-                        <div class="card horizontal">
-                          <div class="card-stacked">
-                            <div class="card-content">
-                              <h5>{{$kumidata->kumi_name}}</h5>
-                            </div>
-                            <!--
-                            <div class="card-action">
-                                <p>対象　:　〇〇組</p>
-                            </div>
-                              -->
-                          </div>
-                        </div>
-                        </a>
-                    </span>
-
-                  
-
-                @endforeach
-                      
-           </div>
-          @endforeach
-
-               <?php
-                  $hannbaikai_id  = $hannbaikaidata->id;
-                  $hannbaikumi_id =$kumidata->kumi_id;
-                ?>
-      <div id="{{$hannbaikaidata->hannbaikai_name}}" class="modal">
-          <div class="modal-content">
-            <div class="modal-header center-align">
-              <h5>発注書〇</h5>
+            <!-- 新規作成ボタン -->
+            <div class="add_button">
+                <a class="btn-floating btn-large waves-effect waves-light blue" href="{{ action('PoCreateController@show') }}"><i class="material-icons">add</i></a>
             </div>
-            <!-- 選択肢のカード -->
-            <!-- 選択肢１ -->
-            <a href="{{ action('PoFillInController@show',[$hannbaikai_id, $kumidata->kumi_id])}}">
-              <div class="row">
-                  <div class="card">
-                    <div class="card-content center-align">
-                      <p>保護者入力</p>
-                    </div>
-                  </div>
-              </div>
-            </a>
-            <!-- 選択肢２ -->
-            <a href="{{ action('PoFillInController@show',[$hannbaikai_id, $kumidata->kumi_id])}}">
-              <div class="row">
-                  <div class="card">
-                    <div class="card-content center-align">
-                      <p>注文内容確認</p>
-                    </div>
-                  </div>
-              </div>
-            </a>
-            <!-- 選択肢５ -->
-            <a href="{{ action('PoFillInController@show',[$hannbaikai_id, $kumidata->kumi_id])}}">
-              <div class="row">
-                  <div class="card">
-                    <div class="card-content center-align">
-                      <p>引き渡しチェック</p>
-                    </div>
-                  </div>
-              </div>
-            </a>
+            <p></p>
 
-            <!-- 削除、詳細-->
+            <a id="1_1" onclick="createModal(this.id);">てすと</a>
+
+            <!--test-->
+            <script>
+                function createModal(id){
+                    console.log(id.split("_"));
+
+                }
+            </script>
+
+
+
+            @foreach($hannbaikai as $hannbaikaidata)
+                <?php $hannbaikumi = $hannbaikaidata->kumis;?>
+                <!-- 発注ごと -->
+                <div class="z-depth-1 blue-text order">
+
+                    <div class="row">
+                      <p class="col s8 order_title">{{$hannbaikaidata->hannbaikai_name}}</p>
+
+                      <div class="col s4 order_button">
+                            <a class="btn-floating btn-large waves-effect waves-light green"
+                            href="{{ action('PoCheckInspectionController@show') }}" ><i class="material-icons">content_paste</i></a>
+                            <a class="btn-floating btnz-large waves-effect waves-light red"
+                            href="{{ action('PoPrintController@show',$hannbaikaidata->id) }}" ><i class="material-icons">local_printshop</i></a>
+                        </div>
+                    </div>
+
+
+                        <!-- クラスごと -->
+                    @foreach($hannbaikumi as $kumidata)
+                        <span>
+                            <a class="modal-trigger" href="#{{$hannbaikaidata->hannbaikai_name}}">
+                            <div class="card horizontal">
+                              <div class="card-stacked">
+                                <div class="card-content">
+                                  <h5>{{$kumidata->kumi_name}}</h5>
+                                </div>
+                                <!--
+                                <div class="card-action">
+                                    <p>対象　:　〇〇組</p>
+                                </div>
+                                  -->
+                              </div>
+                            </div>
+                            </a>
+                        </span>
+                    @endforeach
+
+                </div>
+            @endforeach
+
+            <div id="{{$hannbaikaidata->hannbaikai_name}}" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header center-align">
+                        <h5>発注書〇</h5>
+                    </div>
+
+                    <a id="fill_in" href="{{ action('PoFillInController@show') }}">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-content center-align">
+                                    <p>保護者入力</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a id="customer_list" href="{{ action('PoFillInController@show') }}">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-content center-align">
+                                    <p>注文内容確認</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a id="check_delivery" href="{{ action('PoFillInController@show') }}">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-content center-align">
+                                    <p>引き渡しチェック</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+            <!-- 削除、詳細 -->
             <!--
               <div class="row">
                 <div class="col s6">
@@ -135,11 +139,10 @@ use Illuminate\Database\Eloquent\Model;
                   </a>
                 </div>
             -->
-            </div>   
-          </div>
+            </div>
         </div>
-      </div>
     </div>
+
 @stop
 
 @section('addJS')
@@ -158,5 +161,6 @@ use Illuminate\Database\Eloquent\Model;
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
   });
+
 </script>
 @stop
