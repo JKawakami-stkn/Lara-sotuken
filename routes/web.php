@@ -35,7 +35,7 @@ Route::get('/','LoginController@show');
 Route::get('/po_by_vendor','PoByVendorController@show');
 
 //保護者への商品引き渡し画面
-Route::get('/po_check_delivery','PoCheckDeliveryController@show');
+Route::get('/po_check_delivery/{hannbaikai_id}/{kumi_id}','PoCheckDeliveryController@show');
 Route::post('/po_check_delivery','PoCheckDeliveryController@store');
 
 //納品された商品の検品を行う画面
@@ -47,7 +47,7 @@ Route::get('/po_create','PoCreateController@show');
 Route::post('/po_create','PoCreateController@store');
 
 //保育士が担当の園児の注文内容を確認する画面
-Route::get('/po_customer_list','PoCustomerListController@show');
+Route::get('/po_customer_list/{hannbaikai_id}/{kumi_id}','PoCustomerListController@show');
 
 //注文書に登録した商品、組を確認するための画面
 Route::get('/po_details','PoDetailsController@show');
