@@ -1,0 +1,42 @@
+/* button回り込み*/
+.order_title {
+    float:left;
+    margin-left: 30%;
+}
+
+.order_button > a {
+    _margin-left: 12px;
+}
+
+/* カード下部の詳細 */
+.card-action p {
+  margin : 0;
+}
+
+/* 選択したときのポップアップ内タイトル*/
+.modal-header {
+  margin-bottom: 30px;
+}
+
+/* 選択したときのポップアップ内要素*/
+.row  {
+  margin: 0;
+}
+
+/* 編集、削除ボタン */
+.half > p {
+  font-size: 10px;
+}
+
+/* 発注単位の枠 */
+.order {
+  padding: 2%;
+  margin-bottom: 5  0px;
+}
+
+.order_title {
+  font-size: 26px;
+  text-align: center;
+  margin-top:5px;
+  margin-bottom: 15px;
+}

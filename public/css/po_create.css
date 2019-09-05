@@ -1,0 +1,15 @@
+.class-checkbox label{
+    display: inline-block;
+    width: 200px;
+}
+
+.yohin-checkbox label{
+    display: inline-block;
+    width: 200px;
+}
+
+/* 用品の種別セレクター */
+.select-wrapper {
+  width: 120px;
+  margin-left: 60%
+}

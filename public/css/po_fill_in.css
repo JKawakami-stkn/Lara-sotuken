@@ -1,0 +1,45 @@
+.product-header{
+    padding-right: 10%;
+}
+
+th.product.yohin{
+    padding-left: 5%;
+    width: 30%;
+}
+
+
+th.product.tanka{
+    width: 20%;
+}
+
+th.product.size{
+    width: 30%;
+    padding: 0;
+    padding-right: 18%;
+    border-left: 100%;
+}
+
+th.product.suryo{
+    width:20%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.product{
+    padding-left: 0px;
+    font-weight: 100;
+}
+
+.products-table{
+    margin-right: 1%;
+
+}
+
+.products-table:nth-child(1){
+    margin-right: 10%;
+}
+
+.top{
+  font-weight:900;
+  color: black;
+}
