@@ -64,7 +64,7 @@ Route::get('/po_list','PoListController@show');
 Route::get('/po_print/{hannbaikai_id}','PoPrintController@show');
 
 //発注書の詳細を確認するための画面
-Route::get('/po_print_details','PoPrintDetailsController@show');
+Route::get('/po_print_details/{hannbaikai_id}/{torihikisaki_id}','PoPrintDetailsController@show');
 
 //DBに登録した商品全てを表示するための画面
 Route::get('/show_supplie_list','ShowSupplieListController@show');
