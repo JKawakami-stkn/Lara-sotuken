@@ -48,18 +48,22 @@ class AddSupplieController extends Controller
 
     //レコード数取得
     $num = $syouhinn->getNumberOfRecord();
+    \Debugbar::addMessage($size);
 
-    if(count($size) > 0 and $color == null){
-      for($i = 0; $i < count($size); $i++){
-        $sku->storeData1($size, $num);
-      }
-    }elseif(count($color) > 0 and $size == null){
-      for($i = 0; $i < count($size); $i++){
-        $sku->storeData2($color, $num);
-      }
-    }elseif(count($color) > 0 and count($size) > 0){
-      for($i = 0; $i < count($size); $i++){
-        $sku->storeData3($size, $color, $num);
+
+    if(isset($size) or isset($color)){//nullならfalseを返す
+      if(isset($color) and !isset($color)){//色がnullでない
+        for($i = 0; $i < count($color); $i++){
+          $sku->storeData2($color, $num);
+        }
+      }elseif(isset($size) and !isset($color)){//サイズがnullでない
+        for($i = 0; $i < count($size); $i++){
+          $sku->storeData1($size, $num);
+        }
+      }else{//両方nullでない
+        for($i = 0; $i < count($size); $i++){
+          $sku->storeData3($size, $color, $num);
+        }
       }
     }else{
       $sku->storeData4($num);
