@@ -13,12 +13,11 @@ class DatabaseSeeder extends Seeder
     {
       $this->call([
         // エラーが出たら[ composer dump-autoload ]
+        
         KubunnSeeder::class,
         MkidsSeeder::class,
         TKidsGpPosiSeeder::class,
-        MWfGroupSeeder::class
-        
-
+        MWfGroupSeeder::class,
 
       ]);
     }

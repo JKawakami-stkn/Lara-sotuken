@@ -8,7 +8,7 @@ class NullAbleSkuTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *[composer require doctrine/dbal]
      * @return void
      */
     public function up()
