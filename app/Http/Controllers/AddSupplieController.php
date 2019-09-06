@@ -48,7 +48,7 @@ class AddSupplieController extends Controller
 
     //レコード数取得
     $num = $syouhinn->getNumberOfRecord();
-    \Debugbar::addMessage($size);
+    //Debugbar::addMessage($size);
 
 
     if(isset($size) or isset($color)){//nullならfalseを返す
