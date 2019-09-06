@@ -43,7 +43,7 @@ class Syouhinn extends Model
       $syouhinn->tannka = $request->tannka;
       $syouhinn->kubunn_id = $request->kubunn_id;
       $syouhinn->torihikisaki_id = $request->torihikisaki_id;
-      $syouhinn->delete = 0;
+      $syouhinn->delete = 1;
       // データベースにデータを追加
       $syouhinn->save();
     }
@@ -65,6 +65,10 @@ class Syouhinn extends Model
 
       // データベースのデータを更新
       $syouhinn->save();
+    }
+
+    public function  getNumberOfRecord(){
+      return Syouhinn::all()->count();
     }
 
 }
