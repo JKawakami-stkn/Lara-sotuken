@@ -12,7 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       $this->call([
-        KubunnSeeder::class
+        // エラーが出たら[ composer dump-autoload ]
+        KubunnSeeder::class,
+        MkidsSeeder::class,
+        TKidsGpPosiSeeder::class,
+        MWfGroupSeeder::class
+        
 
 
       ]);
