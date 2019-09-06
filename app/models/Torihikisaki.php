@@ -58,6 +58,7 @@ class Torihikisaki extends Model
     $torihikisaki->torihikisaki_name = $request->torihikisaki_name;
     $torihikisaki->denwabanngou = $request->denwabanngou;
     $torihikisaki->zyuusyo = $request->zyuusyo;
+    $torihikisaki->delete = $request->delete;
 
     $torihikisaki->save();
   }

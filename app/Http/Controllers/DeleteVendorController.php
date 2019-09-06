@@ -46,7 +46,7 @@ class DeleteVendorController extends Controller
     //取引先モデルをインスタンス化
     $torihikisaki = new Torihikisaki();
     //フラグ変更
-    $request->delete = 0;
+    $request->delete = 1;
     //更新
     $torihikisaki->updateData($request);
     //取得
