@@ -25,8 +25,8 @@
             @foreach($data as $d)
             <li>
             <?php 
-                //deleteフラグが１のもののみを表示する
-                if($d->delete == 1){
+                //deleteフラグが0のもののみを表示する
+                if($d->delete == 0){
             ?>
                 <div class="collapsible-header"><i class="material-icons">chevron_right</i>{{$d->torihikisaki_name}}</div>
                 <div class="collapsible-body">
