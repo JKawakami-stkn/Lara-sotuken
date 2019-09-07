@@ -44,6 +44,10 @@ class EditPoCreateController extends Controller
         //hannbaikaiとsyouhinを紐づけてDBの値を更新する処理//
         $hannbaikai->syouhins()->sync($syouhinns);
 
+        //注文商品の締め切りの更新
+       $hannbaikai->simekiri = $request->deadline;
+       $hannbaikai->save();
+
        //注文商品の名前の更新
        $hannbaikai->hannbaikai_name = $request->tyumonsyo;
        $hannbaikai->save();
