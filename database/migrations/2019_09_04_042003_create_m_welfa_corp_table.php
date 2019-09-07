@@ -21,6 +21,8 @@ class CreateMWelfaCorpTable extends Migration
             $table->char('DAT_VALID_KBN',1)->default('Y')->nullable(false);
             $table->string('WC_NM',100)->nullable(false);
             $table->string('WC_NM_BS64',150)->nullable(false);
+            
+            
             $table->primary('WC_CD');
 
 

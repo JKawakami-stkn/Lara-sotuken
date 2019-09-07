@@ -14,10 +14,15 @@ class DatabaseSeeder extends Seeder
       $this->call([
         // エラーが出たら[ composer dump-autoload ]
         
-        KubunnSeeder::class,
+        //KubunnSeeder::class,
         MkidsSeeder::class,
         TKidsGpPosiSeeder::class,
         MWfGroupSeeder::class,
+        MWelfaFacilSeeder::class,
+        MWelfaCorpSeeder::class,
+        MWfStaffPosiSeeder::class,
+        MWfStaffSeeder::class
+
 
       ]);
     }
