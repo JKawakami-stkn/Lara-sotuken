@@ -78,5 +78,9 @@ Route::get('/top','TopController@show');
 //取引先削除
 Route::post('/delete_vendor','DeleteVendorController@editFlag');
 
+//発注書編集画面
+Route::get('/edit_po_create/{id}','EditPoCreateController@show');
+Route::post('/edit_po_create/{id}','EditPoCreateController@store');
+
 //　DBアクセスのテスト
 //Route::get('/db/{{type?}}','SampleController@model');
