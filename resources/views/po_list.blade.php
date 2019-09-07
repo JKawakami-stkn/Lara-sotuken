@@ -2,13 +2,14 @@
 <?php
 use Illuminate\Database\Eloquent\Model;
 ?>
+
 <!-- css -->
 @section('addCSS')
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-<link type="text/css" rel="stylesheet" href="css/overall.css">
-<link type="text/css" rel="stylesheet" href="css/po_list.css">
+<link type="text/css" rel="stylesheet" href="{{asset('/css/materialize.min.css')}}" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="{{asset('/css/overall.css')}}">
+<link type="text/css" rel="stylesheet" href="{{asset('css/po_list.css')}}">
 @stop
 
 @section('content')
@@ -38,6 +39,8 @@ use Illuminate\Database\Eloquent\Model;
                   href="{{ action('PoCheckInspectionController@show') }}" ><i class="material-icons">content_paste</i></a>
                 <a class="btn-floating btn-large waves-effect waves-light red"
                     href="{{ action('PoPrintController@show',$hannbaikaidata->id) }}" ><i class="material-icons">local_printshop</i></a>
+                <a class="btn-floating btn-large waves-effect waves-light grey"
+                    href="{{ action('EditPoCreateController@show',$hannbaikaidata->id) }}" ><i class="material-icons">dehaze</i></a>
               </div>
             </div>
             <!-- クラスごと -->
@@ -126,7 +129,7 @@ use Illuminate\Database\Eloquent\Model;
 
 @section('addJS')
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
+<script src="{{asset('js/materialize.js')}}"></script>
 
 <script>
   // 折り畳み
@@ -145,7 +148,6 @@ use Illuminate\Database\Eloquent\Model;
   $('.modal-trigger').on('click', function(){
 
     var target =  $(this);
-
     var hannbaikai_id = target.attr('data-hannbaikai_id');
     var kumi_id = target.attr('data-kumi_id');
     var kumi_name = target.attr('data-kumi_name');
