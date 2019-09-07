@@ -24,7 +24,7 @@
 <label for="tyumonsyo_name"></label>
 </div>
 </li>
-<li class="collection-item">　期　日　：　<input type="text" name="deadline" class="datepicker"></li>
+<li class="collection-item">　期　日　：　<input type="text" name="deadline" class="datepicker" value="" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
 <li class="collection-item">　対　象　：
 <div class="class-checkbox">
 <p>
