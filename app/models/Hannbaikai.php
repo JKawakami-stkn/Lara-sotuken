@@ -34,4 +34,10 @@ class Hannbaikai extends Model
       return $this->belongsToMany('App\models\Kumi', 'hannbaikumi', 'hannbaikai_id', 'kumi_id');
 
     }
+
+    public function syouhins()
+    {
+      return $this->belongsToMany('App\models\Syouhinn', 'hannbaisyouhinn', 'hannbaikai_id', 'syouhinn_id');
+
+    }
 }
