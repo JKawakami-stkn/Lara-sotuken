@@ -26,7 +26,8 @@ class CreateMWfGroupTable extends Migration
           $table->string('GP_NM',60)->nullable(false);
           $table->string('GP_AGE_KBN',3)->nullable(true);
 
-          $table->primary(['WC_CD','WF_CD','GP_CD','WF_YEAR']);
+          #$table->primary(['WC_CD','WF_CD','GP_CD','WF_YEAR']);
+          $table->primary('id');
         });
     }
     /*
