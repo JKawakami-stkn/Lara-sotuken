@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="{{asset('/css/materialize.min.css')}}" media="screen,projection" />
 <link type="text/css" rel="stylesheet" href="{{asset('/css/overall.css')}}">
-<link type="text/css" rel="stylesheet" href="{{asset('css/po_list.css')}}">
+<link type="text/css" rel="stylesheet" href="{{asset('/css/po_list.css')}}">
 @stop
 
 @section('content')
@@ -35,22 +35,25 @@ use Illuminate\Database\Eloquent\Model;
           <div class="z-depth-1 blue-text order">
 
             <div class="row">
-              <p class="col s8 order_title">{{$hannbaikaidata->hannbaikai_name}}</p>
+              <p class="col s10 order_title">{{$hannbaikaidata->hannbaikai_name}}</p>
+        
+              <div class="right-align order_button">
+                <!-- Dropdown Trigger -->
+                <a class='dropdown-trigger btn-floating btn-large waves-effect waves-light grey' href='#' data-target='dropdown'><i class="material-icons">dehaze</i></a>
 
-              <div class="col s4 order_button">
-                <a class="btn-floating btn-large waves-effect waves-light green"
-                  href="{{ action('PoCheckInspectionController@show') }}" ><i class="material-icons">content_paste</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light red"
-                    href="{{ action('PoPrintController@show',$hannbaikaidata->id) }}" ><i class="material-icons">local_printshop</i></a>
-                <a class="btn-floating btn-large waves-effect waves-light grey"
-                    href="{{ action('EditPoCreateController@show',$hannbaikaidata->id) }}" ><i class="material-icons">dehaze</i></a>
+                <!-- Dropdown Structure -->
+                <ul id='dropdown' class='dropdown-content'>
+                  <li><a href="{{ action('PoCheckInspectionController@show') }}"><i class="material-icons">content_paste</i>check</a></li>
+                  <li><a href="{{ action('PoPrintController@show',$hannbaikaidata->id) }}"><i class="material-icons">local_printshop</i>print</a></li>
+                  <li><a href="{{ action('EditPoCreateController@show',$hannbaikaidata->id) }}"><i class="material-icons">edit</i>edit</a></li>
+                </ul>
               </div>
             </div>
+
             <!-- クラスごと -->
             @foreach($hannbaikumi as $kumidata)
-            <?php  ?>
               <span>
-                <a class="modal-trigger" href="#modal" data-hannbaikai_id="{{$hannbaikaidata->id}}" data-kumi_id="{{$kumidata->id}}" data-kumi_name="{{$kumidata}}">
+                <a class="modal-trigger" href="#modal" data-hannbaikai_id="{{$hannbaikaidata->id}}" data-kumi_id="{{$kumidata->id}}" data-kumi_name="{{$kumidata->GP_NM}}">
                 <div class="card horizontal">
                   <div class="card-stacked">
                     <div class="card-content">
@@ -68,7 +71,7 @@ use Illuminate\Database\Eloquent\Model;
       <div id="modal" class="modal">
         <div class="modal-content">
           <div class="modal-header center-align">
-            <h5 id="kumi_name">発注書〇</h5>
+            <h5 id="kumi_name">{{$kumidata->GP_NM}}</h5>
           </div>
 
           <a id="fill_in" href="">
@@ -162,6 +165,9 @@ use Illuminate\Database\Eloquent\Model;
     $("#check_delivery").attr("href", "{{ action('PoCheckDeliveryController@show') }}" + "/" + hannbaikai_id + "/" + kumi_id);
 
   });
+
+  // ドロップダウン
+  $('.dropdown-trigger').dropdown();
 
 </script>
 @stop
