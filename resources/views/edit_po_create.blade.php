@@ -38,18 +38,18 @@ hannbaikai_name}}">
 @foreach ($kumis as $kumi)
     <?php $checkflg = false;?>
     @foreach($hannbaikumi as $hannbaikumidata)
-        @if($kumi->組コード == $hannbaikumidata->id)
+        @if($kumi->id == $hannbaikumidata->id)
             <?php $checkflg = true;?>
             <label>
-            <input type="checkbox" class="filled-in" name="kumi[]" checked="checked" value="{{$kumi->組コード}}" />
-            <span>{{$kumi->組名称}}</span>
+            <input type="checkbox" class="filled-in" name="kumi[]" checked="checked" value="{{$kumi->id}}" />
+            <span>{{$kumi->GP_NM}}</span>
             </label>
         @endif
     @endforeach
     @if($checkflg == false)
         <label>
-            <input type="checkbox" class="filled-in" name="kumi[]" value="{{$kumi->組コード}}" />
-            <span>{{$kumi->組名称}}</span> 
+            <input type="checkbox" class="filled-in" name="kumi[]" value="{{$kumi->id}}" />
+            <span>{{$kumi->GP_NM}}</span> 
         </label>
     @endif
    
