@@ -12,11 +12,10 @@ class MWfGroupSeeder extends Seeder
     public function run()
     {
       DB::table('m_wf_group')->insert([
-
-      [
+          [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '1',
+          'id'=> '1',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:48:22',
           'UPD_DTTIME'=> '2019/07/12 8:07:47',
@@ -28,7 +27,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '2',
+          'id'=> '2',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:48:57',
           'UPD_DTTIME'=> '2019/07/08 7:04:31',
@@ -40,7 +39,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '3',
+          'id'=> '3',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:49:13',
           'UPD_DTTIME'=> '2019/07/08 7:04:36',
@@ -52,7 +51,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '4',
+          'id'=> '4',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:49:34',
           'UPD_DTTIME'=> '2019/07/08 7:05:03',
@@ -64,7 +63,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '5',
+          'id'=> '5',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:49:49',
           'UPD_DTTIME'=> '2019/07/08 7:04:48',
@@ -76,7 +75,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '6',
+          'id'=> '6',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:50:05',
           'UPD_DTTIME'=> '2019/07/08 7:05:09',
@@ -88,7 +87,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '7',
+          'id'=> '7',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:50:33',
           'UPD_DTTIME'=> '2019/07/08 7:05:15',
@@ -100,7 +99,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '8',
+          'id'=> '8',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:50:53',
           'UPD_DTTIME'=> '2019/07/08 7:05:21',
@@ -112,7 +111,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '9',
+          'id'=> '9',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:51:09',
           'UPD_DTTIME'=> '2019/07/08 7:05:27',
@@ -124,7 +123,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '10',
+          'id'=> '10',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:51:22',
           'UPD_DTTIME'=> '2019/07/12 8:07:53',
@@ -136,7 +135,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '11',
+          'id'=> '11',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:51:56',
           'UPD_DTTIME'=> '2019/07/12 8:08:01',
@@ -148,7 +147,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '12',
+          'id'=> '12',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:52:12',
           'UPD_DTTIME'=> '2019/07/12 8:08:05',
@@ -160,7 +159,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '13',
+          'id'=> '13',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:52:30',
           'UPD_DTTIME'=> '2019/07/12 8:08:13',
@@ -172,7 +171,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '14',
+          'id'=> '14',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:52:46',
           'UPD_DTTIME'=> '2019/07/12 8:08:18',
@@ -184,7 +183,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '15',
+          'id'=> '15',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:53:13',
           'UPD_DTTIME'=> '2019/07/18 14:35:56',
@@ -196,7 +195,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '16',
+          'id'=> '16',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/03/19 10:53:34',
           'UPD_DTTIME'=> '2019/06/29 8:35:05',
@@ -208,7 +207,7 @@ class MWfGroupSeeder extends Seeder
           [
           'WC_CD'=> '0014',
           'WF_CD'=> '0001',
-          'GP_CD'=> '17',
+          'id'=> '17',
           'WF_YEAR'=> '2019',
           'CRE_DTTIME'=> '2019/05/16 10:09:56',
           'UPD_DTTIME'=> '2019/05/30 17:56:34',

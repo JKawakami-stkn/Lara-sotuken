@@ -16,7 +16,8 @@ class CreateMWfGroupTable extends Migration
         Schema::create('M_WF_GROUP', function (Blueprint $table) {
           $table->char('WC_CD',4)->nullable(false);
           $table->char('WF_CD',4)->nullable(false);
-          $table->char('GP_CD',4)->nullable(false);
+          #$table->char('GP_CD',4)->nullable(false);
+          $table->integer('id')->nullable(false);
           $table->integer('WF_YEAR')->nullable(false);
           $table->timestamp('CRE_DTTIME')->nullable(false)->useCurrent();
           $table->timestamp('UPD_DTTIME')->nullable(false)->useCurrent();
