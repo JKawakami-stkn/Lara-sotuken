@@ -62,12 +62,14 @@ hannbaikai_name}}">
 <li class="collection-item">　用  品　：
 <div class="yohin-checkbox">
 
+<!--
 <select>
 <option value="" disabled selected >絞り込み</option>
 <option value="1">Option 1</option>
 <option value="2">Option 2</option>
 <option value="3">Option 3</option>
 </select>
+-->
 
 <p>
 @foreach ($syouhinns as $syouhin)
