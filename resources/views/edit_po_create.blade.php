@@ -7,6 +7,7 @@
 <link type="text/css" rel="stylesheet" href="{{asset('/css/materialize.min.css')}}" media="screen,projection" />
 <link type="text/css" rel="stylesheet" href="{{asset('/css/overall.css')}}">
 <link type="text/css" rel="stylesheet" href="{{asset('css/po_create.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 @stop
 
 @section('content')
@@ -28,7 +29,7 @@ hannbaikai_name}}">
 <label for="tyumonsyo_name"></label>
 </div>
 </li>
-<li class="collection-item">　期　日　：　<input type="text" name="deadline" class="datepicker" placeholder="20◯◯-0◯-◯◯[半角]" value="{{$hannbaikai->simekiri}}"></li>
+<li class="collection-item">　期　日　：　<input type="text" id="datepicker" name="deadline" class="datepicker" value="" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
 <li class="collection-item">　対　象　：
 <div class="class-checkbox">
 <p>
@@ -106,16 +107,12 @@ hannbaikai_name}}">
 
 @section('addJS')
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-<script src="js/box.js"></script>
-<script src="js/date.js"></script>
-<!-- セレクター -->
+<script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-                          var elems = document.querySelectorAll('select');
-                          var instances = M.FormSelect.init(elems);
-                          });
+$('#datepicker').datepicker({
+    dateFormat: 'yy-mm-dd',
+});
 </script>
 @stop
