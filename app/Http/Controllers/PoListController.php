@@ -15,12 +15,12 @@ class PoListController extends Controller
 
 {
 
-//TODO: リロード対策
   public function show(){
 
     $id = \App\models\Hannbaikai::select('id')->get();
-    $hannbaikai = Hannbaikai::find($id);
-      return view('po_list',['hannbaikai'=>$hannbaikai]);
+    $hannbaikai = Hannbaikai::find($id);
+
+    return view('po_list',['hannbaikai'=>$hannbaikai]);
   }
 
 }

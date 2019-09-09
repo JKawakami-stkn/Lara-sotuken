@@ -27,7 +27,10 @@ use Illuminate\Database\Eloquent\Model;
 
 
       @foreach($hannbaikai as $hannbaikaidata)
-        <?php $hannbaikumi = $hannbaikaidata->kumis;?>
+
+        <!-- 販売会と組を紐づけ -->
+        <?php $hannbaikumi = $hannbaikaidata->kumis; ?>
+
         <!-- 発注ごと -->
           <div class="z-depth-1 blue-text order">
 
@@ -45,12 +48,13 @@ use Illuminate\Database\Eloquent\Model;
             </div>
             <!-- クラスごと -->
             @foreach($hannbaikumi as $kumidata)
+            <?php  ?>
               <span>
-                <a class="modal-trigger" href="#modal" data-hannbaikai_id="{{$hannbaikaidata->id}}" data-kumi_id="{{$kumidata->id}}" data-kumi_name="{{$kumidata->kumi_name}}">
+                <a class="modal-trigger" href="#modal" data-hannbaikai_id="{{$hannbaikaidata->id}}" data-kumi_id="{{$kumidata->id}}" data-kumi_name="{{$kumidata}}">
                 <div class="card horizontal">
                   <div class="card-stacked">
                     <div class="card-content">
-                      <h5>{{$kumidata->kumi_name}}</h5>
+                      <h5>{{$kumidata->GP_NM}}</h5>
                     </div>
                   </div>
                 </div>
