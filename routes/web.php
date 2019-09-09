@@ -24,7 +24,7 @@ Route::get('/add_vendor','AddVendorController@show');
 Route::post('/add_vendor','AddVendorController@store');
 
 // 取引先情報編集
-Route::get('/edit_vendor/{torihikisaki_id}','EditVendorController@show');
+Route::get('/edit_vendor/{torihikisaki_id?}','EditVendorController@show');
 Route::post('/edit_vendor','EditVendorController@edit');
 
 //ログイン
@@ -61,7 +61,7 @@ Route::post('/po_fill_in','PoFillInController@store');
 Route::get('/po_list','PoListController@show');
 
 //発注書を印刷するための画面
-Route::get('/po_print/{hannbaikai_id}','PoPrintController@show');
+Route::get('/po_print/{hannbaikai_id?}','PoPrintController@show');
 
 //発注書の詳細を確認するための画面
 Route::get('/po_print_details/{hannbaikai_id}/{torihikisaki_id}','PoPrintDetailsController@show');
@@ -79,7 +79,7 @@ Route::get('/top','TopController@show');
 Route::post('/delete_vendor','DeleteVendorController@editFlag');
 
 //発注書編集画面
-Route::get('/edit_po_create/{id}','EditPoCreateController@show');
+Route::get('/edit_po_create/{id?}','EditPoCreateController@show');
 Route::post('/edit_po_create/{id}','EditPoCreateController@store');
 
 //　DBアクセスのテスト

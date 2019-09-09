@@ -39,15 +39,10 @@ use Illuminate\Database\Eloquent\Model;
         
               <div class="right-align order_button">
                 <!-- Dropdown Trigger -->
-                <a class='dropdown-trigger btn-floating btn-large waves-effect waves-light grey' href='#' data-target='dropdown'><i class="material-icons">dehaze</i></a>
+                <a class='dropdown-trigger btn-floating btn-large waves-effect waves-light grey' href='' data-target='dropdown' data-hannbaikai_id="{{$hannbaikaidata->id}}"><i class="material-icons">dehaze</i></a>
 
-                <!-- Dropdown Structure -->
-                <ul id='dropdown' class='dropdown-content'>
-                  <li><a href="{{ action('PoCheckInspectionController@show') }}"><i class="material-icons">content_paste</i>check</a></li>
-                  <li><a href="{{ action('PoPrintController@show',$hannbaikaidata->id) }}"><i class="material-icons">local_printshop</i>print</a></li>
-                  <li><a href="{{ action('EditPoCreateController@show',$hannbaikaidata->id) }}"><i class="material-icons">edit</i>edit</a></li>
-                </ul>
               </div>
+
             </div>
 
             <!-- クラスごと -->
@@ -68,6 +63,14 @@ use Illuminate\Database\Eloquent\Model;
           </div>
       @endforeach
 
+      <!-- ドロップダウン -->
+      <ul id='dropdown' class='dropdown-content'>
+        <li><a id="check" href=""><i class="material-icons">content_paste</i>check</a></li>
+        <li><a id="print" href=""><i class="material-icons">local_printshop</i>print</a></li>
+        <li><a id="edit" href=""><i class="material-icons">edit</i>edit</a></li>
+      </ul>
+
+      <!-- モーダル -->
       <div id="modal" class="modal">
         <div class="modal-content">
           <div class="modal-header center-align">
@@ -104,29 +107,6 @@ use Illuminate\Database\Eloquent\Model;
             </div>
           </a>
 
-            <!-- 削除、詳細 -->
-            <!--
-              <div class="row">
-                <div class="col s6">
-                  <a href="./po_details.html">
-                    <div class="card half">
-                      <div class="card-content center-align">
-                        <p>詳細</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="col s6">
-                    <a href="">
-                      <div class="card half">
-                        <div class="card-content center-align">
-                          <p>削除</p>
-                        </div>
-                    </div>
-                  </a>
-                </div>
-            -->
         </div>
       </div>
     </div>
@@ -139,6 +119,7 @@ use Illuminate\Database\Eloquent\Model;
 <script src="{{asset('js/materialize.js')}}"></script>
 
 <script>
+
   // 折り畳み
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
@@ -166,8 +147,22 @@ use Illuminate\Database\Eloquent\Model;
 
   });
 
-  // ドロップダウン
+
+  // ドロップダウン初期化
   $('.dropdown-trigger').dropdown();
+  
+  // ドロップダウン生成
+  $('.dropdown-trigger').on('click', function(){
+
+    var target =  $(this);
+    var hannbaikai_id = target.attr('data-hannbaikai_id');
+    // console.log(target);
+
+    $("#check").attr("href", "{{ action('PoCheckInspectionController@show') }}" + "/" + hannbaikai_id );
+    $("#print").attr("href", "{{ action('PoPrintController@show') }}" + "/" + hannbaikai_id );
+    $("#edit").attr("href", "{{ action('EditPoCreateController@show') }}" + "/" + hannbaikai_id );
+  });
+
 
 </script>
 @stop
