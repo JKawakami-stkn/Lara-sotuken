@@ -51,9 +51,9 @@
 <option value="2">Option 2</option>
 <option value="3">Option 3</option>
 </select>
+<label></label>
 -->
 
-<label>Materialize Select</label>
 <p>
 @foreach ($syouhinns as $syouhin)
 <label><input type="checkbox" class="filled-in" name="syouhinn[]" value="{{$syouhin->id}}" /> <span>{{$syouhin->syouhinn_name}}</span></label>
