@@ -16,7 +16,7 @@ class EditPoCreateController extends Controller
 {
     public function show(Request $request, $id){
 
-        $kumis = \DB::table('組マスタ')->where('園年度', '2019')->get(); //組み情報を取得
+        $kumis = \DB::table('m_wf_group')->where('WF_YEAR', '2019')->get(); //組み情報を取得
         $syouhinns =\DB::table('syouhinn')->get(); //商品情報を取得
         $hannbaikai = Hannbaikai::find($id); //パラメータ情報から販売情報取得
         $hannbaikumi = $hannbaikai->kumis; //hannbaikaiのidと紐づいているkumi情報を取得

@@ -31,7 +31,7 @@ class Hannbaikai extends Model
 
     public function kumis()
     {
-      return $this->belongsToMany('App\models\Kumi', 'hannbaikumi', 'hannbaikai_id', 'kumi_id');
+      return $this->belongsToMany('App\models\MWfGroup', 'hannbaikumi', 'hannbaikai_id', 'kumi_id');
 
     }
 

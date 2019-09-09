@@ -32,8 +32,8 @@
 <p>
 @foreach ($kumis as $kumi)
 <label>
-<input type="checkbox" class="filled-in" name="kumi[]" value="{{$kumi->組コード}}" />
-<span>{{$kumi->組名称}}</span>
+<input type="checkbox" class="filled-in" name="kumi[]" value="{{$kumi->id}}" />
+<span>{{$kumi->GP_NM}}</span>
 </label>
 @endforeach
 </p>
