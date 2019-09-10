@@ -74,7 +74,7 @@ use Illuminate\Database\Eloquent\Model;
       <div id="modal" class="modal">
         <div class="modal-content">
           <div class="modal-header center-align">
-            <h5 id="kumi_name">{{$kumidata->GP_NM}}</h5>
+            <h5 id="kumi_name"></h5>
           </div>
 
           <a id="fill_in" href="">
