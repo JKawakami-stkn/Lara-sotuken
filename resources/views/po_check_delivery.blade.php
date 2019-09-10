@@ -1,4 +1,8 @@
 @extends('./template/layout')
+
+<!-- CSRFトークン生成 -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- css -->
 @section('addCSS')
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,23 +21,13 @@
 
         <table class="products-table">
             <tr>
-                <th class="product kumi top">
-                    <div class="input-field col s12">
-                        <select>
-                          <option value=""  disabled selected> 組 </option>
-                          <option value="花組">花組</option>
-                          <option value="宙組">宙組</option>
-                          <option value="雪組">雪組</option>
-                        </select>
-                </th>
-
                 <th class="product name top">
                     <div class="input-field col s12">
-                        <select>
-                          <option value="" disabled selected> 名前 </option>
-                          <option value="真木よう子">真木よう子</option>
-                          <option value="はいだしょうこ">はいだしょうこ</option>
-                          <option value="黒木瞳">黒木瞳</option>
+                        <select id="name_selector">
+                          <option value="" disabled selected>  </option>
+                          @foreach($data as $d)
+                            <option value="{{ $d->kids_id }}"> {{ $d->kids_nm_kj }} </option>
+                          @endforeach
                         </select>
                     </div>
                 </th>
@@ -47,8 +41,7 @@
                 <tr>
                     <th class="product yohin top">用品名</th>
                     <th class="product suryo top">数量</th>
-                    <th class="product size top">サイズ</th>
-                    <th class="product box top"><h6>　　</h6></th>
+                    <th class="product box top"><h6></h6></th>
                 </tr>
             </table>
 
@@ -56,12 +49,11 @@
                 <tr>
                     <th class="product yohin top">制服</th>
                     <th class="product suryo top">1　　</th>
-                    <th class="product size top">S　　</th>
                     <th class="product box top">
                       <label>
                         <input type="checkbox" class="filled-in" checked="checked" />
                         <span></span>
-                    </label>
+                      </label>
                     </th>
                 </tr>
             </table>
@@ -72,13 +64,48 @@
 
 
 @section('addJS')
-    <script type="text/javascript" src="{{ asset('/js/materialize.min.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script type="text/javascript" src="{{ asset('/js/materialize.min.js') }}"></script>
 
-    <!-- セレクター -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-       var elems = document.querySelectorAll('select');
-       var instances = M.FormSelect.init(elems);
-      });
-    </script>
+  <!-- セレクター -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+  </script>
+
+  <!-- Ajax -->
+  <script>
+  $(function(){ // 遅延処理
+    $('#name_selector').change(
+      function() {
+
+          var $z_id = $('#name_selector').val();
+
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRFトークン
+              }
+          })
+          $.ajax({
+              type: 'POST',
+              url: '{{route('po_check_delivery.load')}}' + '/' + $z_id,
+              dataType: 'json', // 読み込むデータの種類
+              data: {
+                hannbaikai_id : {{$hannbaikai_id}},
+              },
+          }).done(function (results) {
+              // 成功時の処理
+              //$('#text').html(results);
+              console.log(results)
+          }).fail(function (err) {
+              // 失敗時の処理
+              alert('ファイルの取得に失敗しました。');
+          });
+      }
+    );
+  });
+  </script>
+
 @stop
