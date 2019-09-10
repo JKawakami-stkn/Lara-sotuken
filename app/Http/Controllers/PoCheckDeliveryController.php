@@ -19,7 +19,7 @@ class PoCheckDeliveryController extends Controller
       ->where('t_kids_gp_posi.gp_cd', '=', $kumi_id)
       ->get();
 
-      var_dump($data);
+      //var_dump($data);
 
     return view('po_check_delivery', ['data'=>$data, 'hannbaikai_id'=>$hannbaikai_id]);
 
@@ -31,7 +31,7 @@ class PoCheckDeliveryController extends Controller
   public function load(Request $request, $zidou_id){
 
     $data = DB::table('tyuumonnmeisai')
-      ->select('syouhinn.syouhinn_name', 'sku.saizu', 'sku.color')
+      ->select('syouhinn.syouhinn_name', 'sku.saizu', 'sku.color', 'tyuumonnmeisai.suuryou')
       ->leftjoin('sku', 'tyuumonnmeisai.sku_id', '=', 'sku.id')
       ->leftjoin('syouhinn', 'sku.syouhinn_id', '=', 'syouhinn.id')
       ->where('tyuumonnmeisai.zidou_id', '=', $zidou_id)

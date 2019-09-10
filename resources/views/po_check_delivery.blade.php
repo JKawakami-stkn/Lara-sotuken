@@ -35,7 +35,7 @@
         </table>
 
         <ul class="collection with-header">
-          <li class="collection-header"><h4>岡山　太郎さんの注文</h4></li>
+          <li class="collection-header"><h4 id="c-head"></h4></li>
 
             <table class="products-table">
                 <tr>
@@ -45,19 +45,11 @@
                 </tr>
             </table>
 
-            <table class="products-table">
-                <tr>
-                    <th class="product yohin top">制服</th>
-                    <th class="product suryo top">1　　</th>
-                    <th class="product box top">
-                      <label>
-                        <input type="checkbox" class="filled-in" checked="checked" />
-                        <span></span>
-                      </label>
-                    </th>
-                </tr>
+            <table id="p-tavle" class="products-table">
+                
             </table>
           </ul>
+          
       </div>
     </div>
 @stop
@@ -82,6 +74,8 @@
       function() {
 
           var $z_id = $('#name_selector').val();
+          var nameSelect = $("#name_selector");
+          var $z_name = nameSelect.children("option:selected").text();
 
           $.ajaxSetup({
               headers: {
@@ -97,11 +91,28 @@
               },
           }).done(function (results) {
               // 成功時の処理
-              //$('#text').html(results);
-              console.log(results)
+              $('#c-head').text($z_name + 'さんの注文');
+              $('#p-tavle').text('');
+              for(var d in results) {
+                $('#p-tavle').append(
+                  '<tr>' +
+                    '<th class="product yohin top">' + results[d].syouhinn_name + '　　' +results[d].saizu + '　　' +results[d].color +'</th>' +
+                    '<th class="product suryo top">'+ results[d].suuryou　+'個</th>' +
+                    '<th class="product box top">' +
+                      '<label>'+
+                        '<input type="checkbox" class="filled-in" _checked="checked" />' +
+                        '<span></span>' +
+                      '</label>' +
+                    '</th>' +
+                  '</tr>'
+                );
+              }
+              
+              
+              
           }).fail(function (err) {
               // 失敗時の処理
-              alert('ファイルの取得に失敗しました。');
+              alert('データの取得に失敗しました。');
           });
       }
     );
