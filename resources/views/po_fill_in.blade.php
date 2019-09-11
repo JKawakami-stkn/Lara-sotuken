@@ -23,9 +23,9 @@
                     <div class="input-field col s12">
                         <select>
                           <option value="" disabled selected> 名前 </option>
-                          <option value="真木よう子">真木よう子</option>
-                          <option value="はいだしょうこ">はいだしょうこ</option>
-                          <option value="黒木瞳">黒木瞳</option>
+                          @foreach($kids_collection as $kids)
+                          <option value={{$kids["KIDS_ID"]}}>{{$kids["KIDS_NM_KJ"]}}</option>
+                          @endforeach
                         </select>
                     </div>
                 </th>
@@ -41,24 +41,49 @@
                     <th class="product yohin top">用品名</th>
                     <th class="product tanka top">単価</th>
                     <th class="product size top">ｻｲｽﾞ</th>
+                    <th class="product color top">色</th>
                     <th class="product suryo top">数量</th>
                 </tr>
             </table>
-
+           <form action="{{ action('PoFillinController@store')}}" method="post">
+            @foreach($syouhinn_collection as $syouhinn)
+            
             <table class="products-table hogosya-table">
                 <tr>
-                    <th class="product yohin">制服</th>
-                    <th class="product tanka">〇〇〇〇円</th>
+                    <?php
+                      $syouhinn_info = [];
+                    ?>
+                    <th class="product yohin" value={{$syouhinn["syouhinn_ID"]}}>{{$syouhinn["syouhinn_name"]}}</th>
+                    
+                    <th class="product tanka">{{$syouhinn["tannka"]}}円</th>
+                    @if($syouhinn["saizu"][0] != null)
                     <th class="product size">
                         <div class="input-field col s12">
                            <select>
                              <option value="" disabled selected> - </option>
-                             <option value="s">S</option>
-                             <option value="m">M</option>
-                             <option value="l">L</option>
+                             @foreach($syouhinn["saizu"] as $key => $member)
+                             <!-- {{\Debugbar::info($key)}} -->
+                             <!-- {{\Debugbar::info($member)}} -->
+                             <option value={{$member}}>{{$member}}</option>
+                             @endforeach
                            </select>
                          </div>
                     </th>
+                    @endif
+                    @if($syouhinn["color"][0] != null)
+                    <th class="product size">
+                        <div class="input-field col s12">
+                           <select>
+                             <option value="" disabled selected> - </option>
+                             @foreach($syouhinn["color"] as $key => $member)
+                             <!-- {{\Debugbar::info($key)}} -->
+                             <!-- {{\Debugbar::info($member)}} -->
+                             <option value={{$member}}>{{$member}}</option>
+                             @endforeach
+                           </select>
+                         </div>
+                    </th>
+                    @endif
                     <th class="product suryo">
                         <div class="row">
                           <div class="input-field col s6">
@@ -68,6 +93,9 @@
                     </th>
                 </tr>
             </table>
+            @endforeach
+          </form>
+
           </ul>
 
           <!-- 確定button -->

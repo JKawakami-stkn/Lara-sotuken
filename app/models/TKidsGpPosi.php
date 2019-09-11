@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class MKids extends Model
+class TkidsGpPosi extends Model
 {
     // テーブル名
-    protected $table = 'M_KIDS';
+    protected $table = 'T_KIDS_GP_POSI';
 
     // 主キーのセット
-    protected $guarded = ['KIDS_ID'];
+    protected $guarded = ['KIDS_ID','WC_CD','WF_CD','GP_CD','WF_YEAR','KIDS_GP_FR_DT'];
 
     // タイムスタンプの自動挿入無効
     public $timestamps = false;
@@ -22,7 +22,6 @@ class MKids extends Model
 
     //主キーがintでない場合の記述
     protected $keyType = 'string';
-
 
 
     // DBからデータを取得し返すメソッド
