@@ -1,7 +1,7 @@
 /* button回り込み*/
 .order_title {
-    float:left;
-    margin-left: 30%;
+    _float:left;
+    _margin-left: 30%;
 }
 
 .order_button > a {
@@ -31,7 +31,7 @@
 /* 発注単位の枠 */
 .order {
   padding: 2%;
-  margin-bottom: 5  0px;
+  margin-bottom: 30px;
 }
 
 .order_title {

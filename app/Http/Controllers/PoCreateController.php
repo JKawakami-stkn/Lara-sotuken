@@ -14,7 +14,7 @@ class PoCreateController extends Controller
 {
 
   public function show(){
-    $kumis = \DB::table('組マスタ')->where('園年度', '2019')->get();
+    $kumis = \DB::table('m_wf_group')->where('WF_YEAR', '2019')->get();
     $syouhinns =\DB::table('syouhinn')->get();
       return view('po_create',['kumis'=>$kumis,'syouhinns'=>$syouhinns]);
   }
