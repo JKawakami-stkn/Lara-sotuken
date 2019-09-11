@@ -26,6 +26,8 @@ class DeleteVendorController extends Controller
 
   public function edit(Request $request){
 
+      $request->session()->regenerateToken(); //F5での更新制御
+
       // 新規インスタンス作成
       $torihikisaki = new Torihikisaki;
 
@@ -43,6 +45,8 @@ class DeleteVendorController extends Controller
 
   //削除フラグを変更する。
   public function editFlag(Request $request){
+
+    $request->session()->regenerateToken(); //F5での更新制御
     //取引先モデルをインスタンス化
     $torihikisaki = new Torihikisaki();
     //フラグ変更
