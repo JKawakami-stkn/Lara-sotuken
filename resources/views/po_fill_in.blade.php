@@ -17,14 +17,17 @@
         <h4 class="page-title blue-text text-lighten-3">保護者入力</h4>
 
         <!-- -->
+        <form action="{{ action('PoFillInController@store')}}" method="post">
+        {{csrf_field()}}
+        <input type="hidden" name="hannbaikai_id" value={{$hannbaikai_id}}>
         <table class="products-table">
             <tr>
                 <th class="product name top">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="KIDS_ID">
                           <option value="" disabled selected> 名前 </option>
                           @foreach($kids_collection as $kids)
-                          <option value={{$kids["KIDS_ID"]}}>{{$kids["KIDS_NM_KJ"]}}</option>
+                          <option  value={{$kids["KIDS_ID"]}}>{{$kids["KIDS_NM_KJ"]}}</option>
                           @endforeach
                         </select>
                     </div>
@@ -32,7 +35,7 @@
             </tr>
         </table>
 
-
+        
         <ul class="collection with-header">
             <li class="collection-header"><h4>2019年4月 物品購入</h4></li>
 
@@ -45,26 +48,23 @@
                     <th class="product suryo top">数量</th>
                 </tr>
             </table>
-           <form action="{{ action('PoFillinController@store')}}" method="post">
+            
             @foreach($syouhinn_collection as $syouhinn)
             
             <table class="products-table hogosya-table">
                 <tr>
-                    <?php
-                      $syouhinn_info = [];
-                    ?>
-                    <th class="product yohin" value={{$syouhinn["syouhinn_ID"]}}>{{$syouhinn["syouhinn_name"]}}</th>
+                    <th class="product yohin" name="{{$syouhinn['syouhinn_ID']}}[syouhinn_id]" value={{$syouhinn["syouhinn_ID"]}}>{{$syouhinn["syouhinn_name"]}}</th>
                     
-                    <th class="product tanka">{{$syouhinn["tannka"]}}円</th>
+                    <th name="syouhinn_tanka[]" value={{$syouhinn["tannka"]}} class="product tanka">{{$syouhinn["tannka"]}}円</th>
                     @if($syouhinn["saizu"][0] != null)
                     <th class="product size">
                         <div class="input-field col s12">
-                           <select>
-                             <option value="" disabled selected> - </option>
+                           <select name="saizu{{$syouhinn['syouhinn_ID']}}[saizu]">
+                             <option  value="_" disabled selected> - </option>
                              @foreach($syouhinn["saizu"] as $key => $member)
                              <!-- {{\Debugbar::info($key)}} -->
                              <!-- {{\Debugbar::info($member)}} -->
-                             <option value={{$member}}>{{$member}}</option>
+                             <option　 value="{{$member}}">{{$member}}</option>
                              @endforeach
                            </select>
                          </div>
@@ -73,12 +73,12 @@
                     @if($syouhinn["color"][0] != null)
                     <th class="product size">
                         <div class="input-field col s12">
-                           <select>
-                             <option value="" disabled selected> - </option>
+                           <select name="{{$syouhinn['syouhinn_ID']}}[color]">
+                             <option value="_" disabled selected> - </option>
                              @foreach($syouhinn["color"] as $key => $member)
                              <!-- {{\Debugbar::info($key)}} -->
                              <!-- {{\Debugbar::info($member)}} -->
-                             <option value={{$member}}>{{$member}}</option>
+                             <option value="{{$member}}">{{$member}}</option>
                              @endforeach
                            </select>
                          </div>
@@ -87,21 +87,25 @@
                     <th class="product suryo">
                         <div class="row">
                           <div class="input-field col s6">
-                            <input value="0" id="first_name2" type="text" class="validate">
+                            <input name="{{$syouhinn['syouhinn_ID']}}[suuryou]" value="0" id="first_name2" type="text" class="validate">
                           </div>
                         </div>
                     </th>
                 </tr>
             </table>
             @endforeach
-          </form>
+            
+            
+            
 
           </ul>
-
+            <div class="right-button">
+              <input class="waves-effect waves-light blue lighten-3 btn modal-trigger" type="submit" value="確定"/>
+            </div>
+          </form>
+          
           <!-- 確定button -->
-          <div class="right-button">
-            <a class="waves-effect waves-light blue lighten-3 btn modal-trigger" href="#modal1">確定</a>
-          </div>
+          
 
       </div>
     </div>
