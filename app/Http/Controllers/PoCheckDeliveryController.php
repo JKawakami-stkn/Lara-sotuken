@@ -52,6 +52,8 @@ class PoCheckDeliveryController extends Controller
 
 
   public function store(Request $request){
+
+    $request->session()->regenerateToken(); //F5での更新制御
     
     // var_dump($request->input('zidou_id'));
     $tyuumonnmeisais_id = $request->input('tyuumonnmeisais_id');
@@ -65,6 +67,6 @@ class PoCheckDeliveryController extends Controller
     $posliscon = new PoListController();
     return  $posliscon->show();
 
-    }
+  }
 
 }
