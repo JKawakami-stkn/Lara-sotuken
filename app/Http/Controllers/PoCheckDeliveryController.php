@@ -31,7 +31,7 @@ class PoCheckDeliveryController extends Controller
   public function load(Request $request, $zidou_id){
 
     $data = DB::table('tyuumonnmeisai')
-      ->select('syouhinn.syouhinn_name', 'sku.saizu', 'sku.color', 'tyuumonnmeisai.suuryou')
+      ->select('tyuumonnmeisai.id as tyuumonn_meisai_id', 'syouhinn.syouhinn_name', 'sku.saizu', 'sku.color', 'tyuumonnmeisai.suuryou')
       ->leftjoin('sku', 'tyuumonnmeisai.sku_id', '=', 'sku.id')
       ->leftjoin('syouhinn', 'sku.syouhinn_id', '=', 'syouhinn.id')
       ->where('tyuumonnmeisai.zidou_id', '=', $zidou_id)
@@ -47,8 +47,24 @@ class PoCheckDeliveryController extends Controller
       JSON_UNESCAPED_UNICODE
     );
 
-    //return response()->json(['result' => true]);
-
   }
+
+
+
+  public function store(Request $request){
+    
+    // var_dump($request->input('zidou_id'));
+    $tyuumonnmeisais_id = $request->input('tyuumonnmeisais_id');
+
+    foreach($tyuumonnmeisais_id as $tyuumonnmeisai_id){
+      DB::table('tyuumonnmeisai')
+        ->where('id', $tyuumonnmeisai_id)
+        ->update(['h_flg' => 1]);
+    }
+
+    $posliscon = new PoListController();
+    return  $posliscon->show();
+
+    }
 
 }

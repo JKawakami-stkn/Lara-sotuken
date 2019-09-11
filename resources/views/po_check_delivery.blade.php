@@ -19,36 +19,44 @@
         <!-- ページ名 -->
         <h4 class="page-title blue-text text-lighten-3">引き渡しチェック</h4>
 
-        <table class="products-table">
-            <tr>
-                <th class="product name top">
-                    <div class="input-field col s12">
-                        <select id="name_selector">
-                          <option value="" disabled selected>  </option>
-                          @foreach($data as $d)
-                            <option value="{{ $d->kids_id }}"> {{ $d->kids_nm_kj }} </option>
-                          @endforeach
-                        </select>
-                    </div>
-                </th>
-            </tr>
-        </table>
+        <form method="POST" action="{{ route('po_check_delivery.store') }}" accept-charset="UTF-8">
+          {{ csrf_field() }}
+          <table class="products-table">
+              <tr>
+                  <th class="product name top">
+                      <div class="input-field col s12">
+                          <select id="name_selector" name="zidou_id">
+                            <option value="" disabled selected>  </option>
+                            @foreach($data as $d)
+                              <option value="{{ $d->kids_id }}"> {{ $d->kids_nm_kj }} </option>
+                            @endforeach
+                          </select>
+                      </div>
+                  </th>
+              </tr>
+          </table>
 
-        <ul class="collection with-header">
-          <li class="collection-header"><h4 id="c-head"></h4></li>
+          <ul class="collection with-header">
+            <li class="collection-header"><h4 id="c-head"></h4></li>
 
-            <table class="products-table">
-                <tr>
-                    <th class="product yohin top">用品名</th>
-                    <th class="product suryo top">数量</th>
-                    <th class="product box top"><h6></h6></th>
-                </tr>
-            </table>
+              <table class="products-table">
+                  <tr>
+                      <th class="product yohin top">用品名</th>
+                      <th class="product suryo top">数量</th>
+                      <th class="product box top"><h6></h6></th>
+                  </tr>
+              </table>
 
-            <table id="p-tavle" class="products-table">
-                
-            </table>
-          </ul>
+              <table id="p-tavle" class="products-table">
+                  
+              </table>
+            </ul>
+
+            <!--　確定ボタン -->
+            <div class="right-button">
+              <button class="btn waves-effect waves-light" type="submit" name="action">確定</button>
+            </div>
+          </form>
           
       </div>
     </div>
@@ -96,11 +104,11 @@
               for(var d in results) {
                 $('#p-tavle').append(
                   '<tr>' +
-                    '<th class="product yohin top">' + results[d].syouhinn_name + '　　' +results[d].saizu + '　　' +results[d].color +'</th>' +
+                    '<th class="product yohin top">' + results[d].syouhinn_name + '　　' + results[d].saizu + '　　' +results[d].color +'</th>' +
                     '<th class="product suryo top">'+ results[d].suuryou　+'個</th>' +
                     '<th class="product box top">' +
                       '<label>'+
-                        '<input type="checkbox" class="filled-in" _checked="checked" />' +
+                        '<input type="checkbox" class="filled-in" name="tyuumonnmeisais_id[]" value="' + results[d].tyuumonn_meisai_id + '" />' +
                         '<span></span>' +
                       '</label>' +
                     '</th>' +
