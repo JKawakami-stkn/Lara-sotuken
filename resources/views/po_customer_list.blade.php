@@ -12,18 +12,8 @@
   <div class="container">
     <!-- ページ名 -->
     <h4 class="page-title blue-text text-lighten-3">注文内容確認</h4>
-
+    <?php var_dump($kids_collection[0]["KIDS_NM_KJ"]) ?>
     <!--基本的にここだけを書き換える-->
-    <div class="top-select">
-      <div class="input-field col s12">
-        <select multiple>
-          <option value="rose">ばら組</option>
-          <option value="tulip">ちゅーりっぷ組</option>
-          <option value="white_lily">しらゆり組</option>
-        </select>
-        <label>組を選択してください</label>
-      </div>
-    </div>
     <!--<tr>
       <th class="product_list name_list">真木よう子</th>
       <th class="product_list yohin_list">制服</th>
@@ -33,72 +23,39 @@
       <th class="product_list sum_list">〇〇</th>
     </tr>-->
     <ul class="collapsible">
-      <li>
-        <div class="collapsible-header"><i class="material-icons">chevron_right</i>むぅけい</div>
-        <div class="collapsible-body">
-          <ul class="collection with-header">
-              <table class="products-table">
-                  <tr>
-                      <th class="product syouhin top">商品名</th>
-                      <th class="product syouhin top">値段</th>
-                      <th class="product syouhin top">サイズ</th>
-                      <th class="product syouhin top">個数</th>
-                  </tr>
-              </table>
+      <!-- 指定されたクラスの園児の一覧を表示する -->
+      @foreach($kids_collection as $k)
+        <li>
+          <div class="collapsible-header"><i class="material-icons">chevron_right</i><?php print_r($k["KIDS_NM_KJ"]) ?></div>
+          <div class="collapsible-body">
+            <ul class="collection with-header">
+                <table class="products-table">
+                    <tr>
+                        <th class="product syouhin top">商品名</th>
+                        <th class="product syouhin top">値段</th>
+                        <th class="product syouhin top">サイズ</th>
+                        <th class="product syouhin top">個数</th>
+                    </tr>
+                </table>
 
-              <table class="products-table hogosya-table">
-                  <tr>
-                    <th class="product syouhin">連絡帳</th>
-                    <th class="product syouhin">300</th>
-                    <th class="product syouhin">-</th>
-                    <th class="product syouhin">3</th>
-                  </tr>
-                  <tr>
-                    <th class="product syouhin">体操服</th>
-                    <th class="product syouhin">5000</th>
-                    <th class="product syouhin">S</th>
-                    <th class="product syouhin">1</th>
-                  </tr>
-              </table>
-            </ul>
-
-        </div>
-      </li>
-
-      <li>
-        <div class="collapsible-header"><i class="material-icons">chevron_right</i>オイックぺー</div>
-        <div class="collapsible-body">
-          <ul class="collection with-header">
-              <table class="products-table">
-                  <tr>
-                      <th class="product syouhin top">商品名</th>
-                      <th class="product syouhin top">値段</th>
-                      <th class="product syouhin top">サイズ</th>
-                      <th class="product syouhin top">個数</th>
-                  </tr>
-              </table>
-
-              <table class="products-table hogosya-table">
-                  <tr>
-                    <th class="product syouhin">連絡帳</th>
-                    <th class="product syouhin">300</th>
-                    <th class="product syouhin">-</th>
-                    <th class="product syouhin">3</th>
-                  </tr>
-                  <tr>
-                    <th class="product syouhin">体操服</th>
-                    <th class="product syouhin">5000</th>
-                    <th class="product syouhin">S</th>
-                    <th class="product syouhin">1</th>
-                  </tr>
-              </table>
-            </ul>
-        </div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">chevron_right</i>武士岬</div>
-        <div class="collapsible-body"><span>価　格</span><span>330円</span><br><br><span>発注先</span><span>〇〇会社</span></div>
-      </li>
+                <table class="products-table hogosya-table">
+                    <tr>
+                      <th class="product syouhin">連絡帳</th>
+                      <th class="product syouhin">300</th>
+                      <th class="product syouhin">-</th>
+                      <th class="product syouhin">3</th>
+                    </tr>
+                    <tr>
+                      <th class="product syouhin">体操服</th>
+                      <th class="product syouhin">5000</th>
+                      <th class="product syouhin">S</th>
+                      <th class="product syouhin">1</th>
+                    </tr>
+                </table>
+              </ul>
+          </div>
+        </li>
+      @endforeach
     </ul>
   </div>
 @stop
