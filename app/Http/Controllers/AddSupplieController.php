@@ -51,19 +51,15 @@ class AddSupplieController extends Controller
     //Debugbar::addMessage($size);
 
 
-    if(isset($size) or isset($color)){//nullならfalseを返す
-      if(isset($color) and !isset($color)){//色がnullでない
-        for($i = 0; $i < count($color); $i++){
+    if(isset($size) or isset($color)){//isset()はnullならfalseを返す このifに入ったらどちらかに値が入っている
+      if(!isset($size) and isset($color)){//色がnullでない
           $sku->storeData2($color, $num);
-        }
+        
       }elseif(isset($size) and !isset($color)){//サイズがnullでない
-        for($i = 0; $i < count($size); $i++){
           $sku->storeData1($size, $num);
-        }
+        
       }else{//両方nullでない
-        for($i = 0; $i < count($size); $i++){
           $sku->storeData3($size, $color, $num);
-        }
       }
     }else{
       $sku->storeData4($num);

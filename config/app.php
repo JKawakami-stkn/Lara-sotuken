@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        //Debugbarを使うための記述
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -225,6 +227,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        //Debugbarを使うための記述
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
