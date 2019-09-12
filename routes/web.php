@@ -35,8 +35,9 @@ Route::get('/','LoginController@show');
 Route::get('/po_by_vendor','PoByVendorController@show');
 
 //保護者への商品引き渡し画面
-Route::get('/po_check_delivery/{hannbaikai_id?}/{kumi_id?}','PoCheckDeliveryController@show');
-Route::post('/po_check_delivery','PoCheckDeliveryController@store');
+Route::get('/po_check_delivery/{hannbaikai_id?}/{kumi_id?}','PoCheckDeliveryController@show')->name('po_check_delivery . load');
+Route::post('/po_check_delivery','PoCheckDeliveryController@store')->name('po_check_delivery.store');
+Route::post('/po_check_delivery/load/{zidou_id?}', 'PoCheckDeliveryController@load')->name('po_check_delivery.load');
 
 //納品された商品の検品を行う画面
 Route::get('/po_check_inspection','PoCheckInspectionController@show');

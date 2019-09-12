@@ -19,6 +19,8 @@ class AddVendorController extends Controller
 
   public function store(Request $request){
 
+    $request->session()->regenerateToken(); //F5での更新制御
+
     // 新規インスタンス作成
     $torihikisaki = new Torihikisaki;
 
