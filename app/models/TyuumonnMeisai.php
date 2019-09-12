@@ -29,26 +29,29 @@ class TyuumonnMeisai extends Model
     // DBからデータを取得し返すメソッド
     
     public function store($para,$kids_id,$hannbaikai_id){
-        $sku = new sku();
-        $tyuumonnmeisai = new TyuumonnMeisai();
+        
+        \Debugbar::info($para);
 
         foreach($para as $key => $value){
+            $sku = new sku();
+            $tyuumonnmeisai = new TyuumonnMeisai();
             if($value["suuryou"] != 0){
                 if(array_key_exists("size",$para) and array_key_exists("color",$para)){//array_key_existsはないならfalse
                     //両方ある
                     $sku_id = $sku::select("id")->where("syouhinn_id",$key)->where("saizu",$value["size"])->where("color",$value["color"])->get();
-                    
+                    \Debugbar::info("両方ある");
                 }elseif(array_key_exists("size",$para) and !array_key_exists("color",$para)){
                     //色がない
                     $sku_id = $sku::select("id")->where("syouhinn_id",$key)->where("saizu",$value["size"])->get();
-                    
+                    \Debugbar::info("サイズある");
                 }elseif(!array_key_exists("size",$para) and array_key_exists("color",$para)){
                     //サイズがない
                     $sku_id = $sku::select("id")->where("syouhinn_id",$key)->where("color",$value["color"])->get();
-                    
+                    \Debugbar::info("色ある");
                 }else{
                     //両方ない
                     $sku_id = $sku::select("id")->where("syouhinn_id",$key)->get();
+                    \Debugbar::info("両方ない");
                 }
 
                 
