@@ -12,9 +12,9 @@ use App\Models\Sku;
 use App\Models\MWfGroup;
 use App\Models\MKids;
 use App\Models\TKidsGpPosi;
+use App\Models\TyuumonnMeisai;
 
-
-class PoFillInController extends Controller{
+class PoFillInController extends Controller{  
 
   public function show($hannbaikai_id, $kumi_id){
     $Hannbaisyouhinn = new Hannbaisyouhinn();
@@ -24,12 +24,11 @@ class PoFillInController extends Controller{
     $Mkids = new MKids();
     $TKidsGpPosi = new TKidsGpPosi();
 
-
     
     
     $syouhinn_id = $Hannbaisyouhinn::select('syouhinn_id')->where('hannbaikai_id',$hannbaikai_id)->get();
     
-    $group_info = $MWfGroup::select('GP_NM')->where('GP_CD',$kumi_id)->get();
+    $group_info = $MWfGroup::select('GP_NM')->where('id',$kumi_id)->get();
     $kids_name = $Mkids::select('KIDS_ID','KIDS_NM_KJ')->get();
     $kids_posi = $TKidsGpPosi::where('GP_CD',$kumi_id)->get();
     // \Debugbar::addMessage($kids_name);
@@ -94,8 +93,7 @@ class PoFillInController extends Controller{
     // \Debugbar::info($kids_collection);
 
 
-    
-
+  
 
     
 
@@ -104,7 +102,23 @@ class PoFillInController extends Controller{
 
     
     // \Debugbar::info($syouhinn);
-    return view('po_fill_in',compact('syouhinn_collection','kids_collection'));
+    return view('po_fill_in',compact('syouhinn_collection','kids_collection','hannbaikai_id'));
+  }
+
+  public function store(Request $request){
+    $sku = new sku();
+    $TyuumonnMeisai = new TyuumonnMeisai();
+    $para = $request->all();
+    $hannbaikai_id = $para["hannbaikai_id"];
+    unset($para["hannbaikai_id"]);
+    unset($para["_token"]);
+    $kids_id = $para["KIDS_ID"];
+    unset($para["KIDS_ID"]);
+    
+    $TyuumonnMeisai->store($para,$kids_id,$hannbaikai_id);
+
+    
+    return view('top');
   }
 
 }
