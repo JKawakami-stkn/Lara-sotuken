@@ -21,42 +21,38 @@
 
         <form method="POST" action="{{ route('po_check_delivery.store') }}" accept-charset="UTF-8">
           {{ csrf_field() }}
+
           <table class="products-table">
-              <tr>
-                  <th class="product name top">
-                      <div class="input-field col s12">
-                          <select id="name_selector" name="zidou_id">
-                            <option value="" disabled selected>  </option>
-                            @foreach($data as $d)
-                              <option value="{{ $d->kids_id }}"> {{ $d->kids_nm_kj }} </option>
-                            @endforeach
-                          </select>
-                      </div>
-                  </th>
-              </tr>
+            <tr>
+              <th class="product name top">
+                <div class="input-field col s12">
+                  <select id="name_selector" name="zidou_id">
+                    <option value="" disabled selected>  </option>
+                    @foreach($data as $d)
+                    <option value="{{ $d->kids_id }}"> {{ $d->kids_nm_kj }} </option>
+                    @endforeach
+                  </select>
+                </div>
+              </th>
+            </tr>
           </table>
 
-          <ul class="collection with-header">
-            <li class="collection-header"><h4 id="c-head"></h4></li>
+          <h4 id="c-head"> </h4>
 
-              <table class="products-table">
-                  <tr>
-                      <th class="product yohin top">用品名</th>
-                      <th class="product suryo top">数量</th>
-                      <th class="product box top"><h6></h6></th>
-                  </tr>
-              </table>
+          <table>
+            <thead>
+              
+            </thead>
+            <tbody id="p-table">
+              
+            </tbody>
+          </table>
 
-              <table id="p-tavle" class="products-table">
+          <div id="p-button" class="right-button">
                   
-              </table>
-            </ul>
+          </div>
 
-            <!--　確定ボタン -->
-            <div class="right-button">
-              <button class="btn waves-effect waves-light" type="submit" name="action">確定</button>
-            </div>
-          </form>
+        </form>
           
       </div>
     </div>
@@ -100,23 +96,35 @@
           }).done(function (results) {
               // 成功時の処理
               $('#c-head').text($z_name + 'さんの注文');
-              $('#p-tavle').text('');
+              $('#p-table').text('');
               for(var d in results) {
-                $('#p-tavle').append(
+                var syouhinn_name = results[d].syouhinn_name; // 商品名 + サイズ + 色
+                if(results[d].saizu != 'null'){
+                  syouhinn_name += '　　' + results[d].saizu
+                }
+                if(results[d].color != 'null'){
+                  syouhinn_name += '　　' +results[d].color
+                }
+
+                $('#p-table').append(
                   '<tr>' +
-                    '<th class="product yohin top">' + results[d].syouhinn_name + '　　' + results[d].saizu + '　　' +results[d].color +'</th>' +
-                    '<th class="product suryo top">'+ results[d].suuryou　+'個</th>' +
-                    '<th class="product box top">' +
+
+                    '<td>'+ syouhinn_name +'</td>' +
+                    '<td>'+ results[d].suuryou　+'個</td>' +
+                    '<td>' +
                       '<label>'+
                         '<input type="checkbox" class="filled-in" name="tyuumonnmeisais_id[]" value="' + results[d].tyuumonn_meisai_id + '" />' +
                         '<span></span>' +
                       '</label>' +
-                    '</th>' +
+                    '</td>' +
                   '</tr>'
                 );
               }
-              
-              
+              if(results.length != 0){
+                $('#p-button').replaceWith('<button class="btn waves-effect waves-light" type="submit" name="action">確定</button>');
+              }else{
+                $('#p-button').replaceWith('');
+              }
               
           }).fail(function (err) {
               // 失敗時の処理
