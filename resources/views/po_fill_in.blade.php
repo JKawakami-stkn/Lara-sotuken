@@ -53,11 +53,11 @@
                 @foreach($syouhinn_collection as $syouhinn)
                 <tr>  
                   <div class="row">
-                    <td class="col s4 " name="{{$syouhinn['syouhinn_ID']}}[syouhinn_id]" value={{$syouhinn["syouhinn_ID"]}}>{{$syouhinn["syouhinn_name"]}}</td>
+                    <td class="col s4" name="{{$syouhinn['syouhinn_ID']}}[syouhinn_id]" value={{$syouhinn["syouhinn_ID"]}}>{{$syouhinn["syouhinn_name"]}}</td>
                     @if($syouhinn["saizu"][0] != null)
                     <td class="col s2">
                       <div class="input-field col s12">
-                        <select name="saizu{{$syouhinn['syouhinn_ID']}}[saizu]">
+                        <select name="{{$syouhinn['syouhinn_ID']}}[saizu]">
                           <option value="_" disabled selected> - </option>
                           @foreach($syouhinn["saizu"] as $key => $member)
                           <option value="{{$member}}">{{$member}}</option>
