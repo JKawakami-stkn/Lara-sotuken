@@ -99,10 +99,10 @@
               $('#p-table').text('');
               for(var d in results) {
                 var syouhinn_name = results[d].syouhinn_name; // 商品名 + サイズ + 色
-                if(results[d].saizu != 'null'){
+                if(results[d].saizu != null){
                   syouhinn_name += '　　' + results[d].saizu
                 }
-                if(results[d].color != 'null'){
+                if(results[d].color != null){
                   syouhinn_name += '　　' +results[d].color
                 }
 
