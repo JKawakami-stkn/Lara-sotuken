@@ -106,6 +106,7 @@ class PoFillInController extends Controller{
   }
 
   public function store(Request $request){
+    $request->session()->regenerateToken(); //f5の更新対策
     $sku = new sku();
     $TyuumonnMeisai = new TyuumonnMeisai();
     $para = $request->all();
@@ -116,9 +117,10 @@ class PoFillInController extends Controller{
     unset($para["KIDS_ID"]);
     
     $TyuumonnMeisai->store($para,$kids_id,$hannbaikai_id);
-
+    $po_list = new PoListController();
     
-    return view('top');
+    
+    return $po_list->show();
   }
 
 }
