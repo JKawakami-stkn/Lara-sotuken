@@ -32,7 +32,7 @@
                 <table class="products-table">
                     <tr>
                         <th class="product syouhin top">商品名</th>
-                        <th class="product syouhin top">値段</th>
+                        <th class="product syouhin top">色</th>
                         <th class="product syouhin top">サイズ</th>
                         <th class="product syouhin top">個数</th>
                     </tr>
