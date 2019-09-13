@@ -40,18 +40,31 @@
 
                 <table class="products-table hogosya-table">
                   <!-- ここに購入商品のループを記述する　-->
-                    <tr>
-                      <th class="product syouhin">連絡帳</th>
-                      <th class="product syouhin">300</th>
-                      <th class="product syouhin">-</th>
-                      <th class="product syouhin">3</th>
-                    </tr>
-                    <tr>
-                      <th class="product syouhin">体操服</th>
-                      <th class="product syouhin">5000</th>
-                      <th class="product syouhin">S</th>
-                      <th class="product syouhin">1</th>
-                    </tr>
+                  <?php 
+                    foreach($tyuumonnmeisai as $t){
+                      //児童特定と販売会特定
+                      if($t->zidou_id == $k['KIDS_ID'] && $t->hannbaikai_id == $hannbaikai_id){
+                          foreach($sku as $s){
+                            //sku特定
+                            if($s->id == $t->sku_id){
+                              //商品特定
+                              foreach($syouhinn as $sy){
+                                if($sy->id == $s->syouhinn_id){                          
+                          ?>
+                          <tr>
+                          <th class="product syouhin">{{$sy->syouhinn_name}}</th>
+                          <th class="product syouhin">{{$s->color}}</th>
+                          <th class="product syouhin">{{$s->saizu}}</th>
+                          <th class="product syouhin">{{$t->suuryou}}</th>
+                          </tr>
+                          <?php
+                                }
+                             }
+                            }
+                          }
+                      }
+                    }
+                  ?>
                 </table>
               </ul>
           </div>

@@ -9,6 +9,7 @@ use App\Models\Sku;
 use App\Models\MWfGroup;
 use App\Models\MKids;
 use App\Models\TKidsGpPosi;
+use App\Models\tyuumonnmeisai;
 
 class PoCustomerListController extends Controller
 
@@ -18,6 +19,7 @@ class PoCustomerListController extends Controller
       $Hannbaisyouhinn = new Hannbaisyouhinn();
       $Syouhinn = new Syouhinn();
       $sku = new sku();
+      $tyuumonnmeisai = new Tyuumonnmeisai();
       $MWfGroup = new MWfGroup();
       $Mkids = new MKids();
       $TKidsGpPosi = new TKidsGpPosi();
@@ -40,6 +42,11 @@ class PoCustomerListController extends Controller
           $kids_collection->push($kids_vector);
         }
       }
-      return view('po_customer_list',['kids_collection'=>$kids_collection,'hannbaikai_id'=>$hannbaikai_id]);
+
+      $skuAll = $sku->getData();
+      $tyuumonnmeisaiAll = $tyuumonnmeisai->getData();
+      $syouhinnAll = $Syouhinn->getData();
+      
+      return view('po_customer_list',['kids_collection'=>$kids_collection,'hannbaikai_id'=>$hannbaikai_id,'sku'=>$skuAll,'tyuumonnmeisai'=>$tyuumonnmeisaiAll,'syouhinn'=>$syouhinnAll]);
   }
 }
