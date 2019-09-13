@@ -6,6 +6,7 @@ use App\models\Hannbaikai;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon; //日付関連操作
+use App\Http\Requests\PoCreateRequest;
 
 use App\Models\purchased_articl;
 
@@ -19,7 +20,7 @@ class PoCreateController extends Controller
       return view('po_create',['kumis'=>$kumis,'syouhinns'=>$syouhinns]);
   }
 
-  public function store(Request $request){
+  public function store(PoCreateRequest $request){
 
     $request->session()->regenerateToken(); //F5での更新制御
 

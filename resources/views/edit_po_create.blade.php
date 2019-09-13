@@ -24,14 +24,46 @@
 <ul class="collection">
 <li class="collection-item">注文書の名前　：
 <div class="input-field col s10">
-<input id="tyumonsyo_name"  name="tyumonsyo" type="text" class="validate" value="{{$hannbaikai->	
-hannbaikai_name}}">
+@if(!($errors->all()))
+
+        <input id="tyumonsyo_name"  name="tyumonsyo" type="text" class="validate" value="{{$hannbaikai->	
+        hannbaikai_name}}">
+
+    @else
+
+    @if($errors->has('tyumonsyo'))
+            <?php $tyumonsyo_errors = $errors->get('tyumonsyo');?>
+                @foreach ($tyumonsyo_errors as $tyumonsyo_error)
+                    <tr><th>ERROR </th><td>{{$tyumonsyo_error}}</td></tr>
+                @endforeach
+    @endif
+        <input id="tyumonsyo_name"  name="tyumonsyo" type="text" class="validate" value="{{old('tyumonsyo')}}">
+ @endif
+
+
 <label for="tyumonsyo_name"></label>
 </div>
 </li>
-<li class="collection-item">　期　日　：　<input type="text" id="datepicker" name="deadline" class="datepicker" value="" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
+<li class="collection-item">　期　日　：　
+    @if(!($errors->all()))
+        <input type="text" id="datepicker" name="deadline" class="datepicker" value="{{$hannbaikai->simekiri}}" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
+    @else
+        @if($errors->has('deadline'))
+                <?php $deadline_errors = $errors->get('deadline')?>
+                    @foreach ($deadline_errors as $deadline_error)
+                        <tr><th>ERROR </th><td>{{$deadline_error}}</td></tr>
+                    @endforeach
+        @endif
+         <input type="text" id="datepicker" name="deadline" class="datepicker" value="{{old('deadline')}}" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
+    @endif
 <li class="collection-item">　対　象　：
 <div class="class-checkbox">
+@if($errors->has('kumi'))
+            <?php $kumi_errors = $errors->get('kumi')?>
+                @foreach ($kumi_errors as $kumi_error)
+                    <tr><th>ERROR </th><td>{{$kumi_error}}</td></tr>
+                @endforeach
+ @endif
 <p>
 <label>
 <p>
@@ -62,6 +94,13 @@ hannbaikai_name}}">
 </li>
 <li class="collection-item">　用  品　：
 <div class="yohin-checkbox">
+
+@if($errors->has('syouhinn'))
+            <?php $syouhinn_errors = $errors->get('syouhinn')?>
+                @foreach ($syouhinn_errors as $syouhinn_error)
+                    <tr><th>ERROR </th><td>{{$syouhinn_error}}</td></tr>
+                @endforeach
+@endif
 
 <!--
 <select>
