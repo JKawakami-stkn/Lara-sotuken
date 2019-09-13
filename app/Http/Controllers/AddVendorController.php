@@ -8,6 +8,8 @@ use App\models\Torihikisaki;
 use Illuminate\Http\Request;
 use App\Models\purchased_articl;
 
+use App\Http\Requests\VendorRequest;
+
 class AddVendorController extends Controller
 
 {
@@ -17,7 +19,7 @@ class AddVendorController extends Controller
   }
 
 
-  public function store(Request $request){
+  public function store(VendorRequest $request){
 
     $request->session()->regenerateToken(); //F5での更新制御
 
