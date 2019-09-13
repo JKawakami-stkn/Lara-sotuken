@@ -20,8 +20,8 @@
         <a href="{{ action('PoListController@show') }}">
             <div class="card blue lighten-4">
                 <div class="card-content gray-text">
-                    <span class="card-title">発注書一覧</span>
-                    <p>発注書の作成・編集ができます。</p>
+                    <span class="card-title">販売会一覧</span>
+                    <p>販売会の登録・編集ができます。</p>
                 </div>
             </div>
         </a>

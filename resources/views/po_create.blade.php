@@ -13,13 +13,13 @@
 <div class="main">
 <div class="container">
 <!-- ページ名 -->
-<h4 class="page-title blue-text text-lighten-3">発注書新規作成</h4>
+<h4 class="page-title blue-text text-lighten-3">販売会新規登録</h4>
 
 <!-- 入力フォーム -->
 <form action="{{ action('PoCreateController@store')}}" method="post">
 {{ csrf_field() }}
 <ul class="collection">
-<li class="collection-item">注文書の名前　：
+<li class="collection-item">販売会の名前　：
     <div class="input-field col s10">
         @if($errors->has('tyumonsyo'))
             <?php $tyumonsyo_errors = $errors->get('tyumonsyo');?>

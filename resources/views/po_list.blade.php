@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
   <div class="main">
     <div class="container">
       <!-- ページ名 -->
-      <h4 class="page-title blue-text text-lighten-3">発注書一覧</h4>
+      <h4 class="page-title blue-text text-lighten-3">販売会一覧</h4>
 
       <!-- 新規作成ボタン -->
       <div class="add_button">
