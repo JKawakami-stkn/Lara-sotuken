@@ -12,15 +12,7 @@
   <div class="container">
     <!-- ページ名 -->
     <h4 class="page-title blue-text text-lighten-3">注文内容確認</h4>
-    <!--基本的にここだけを書き換える-->
-    <!--<tr>
-      <th class="product_list name_list">真木よう子</th>
-      <th class="product_list yohin_list">制服</th>
-      <th class="product_list tanka_list">〇〇円</th>
-      <th class="product_list size_list">S</th>
-      <th class="product_list suryo_list">1</div>
-      <th class="product_list sum_list">〇〇</th>
-    </tr>-->
+
     <ul class="collapsible">
       <!-- 指定されたクラスの園児の一覧を表示する -->
       @foreach($kids_collection as $k)
@@ -29,14 +21,16 @@
           <div class="collapsible-header"><i class="material-icons">chevron_right</i>{{$k['KIDS_NM_KJ']}}</div>
           <div class="collapsible-body">
             <ul class="collection with-header">
-                <table class="products-table">
-                    <tr>
-                        <th class="product syouhin top">商品名</th>
-                        <th class="product syouhin top">色</th>
-                        <th class="product syouhin top">サイズ</th>
-                        <th class="product syouhin top">個数</th>
+              <table>
+                <thead>
+
+                    <tr class="row" style="font-size:10px;">
+                        <th class="col s6">商品名</th>
+                        <th class="col s2">色</th>
+                        <th class="col s2">サイズ</th>
+                        <th class="col s2">個数</th>
                     </tr>
-                </table>
+                  </thead>
 
                 <table class="products-table hogosya-table">
                   <!-- ここに購入商品のループを記述する　-->
@@ -51,12 +45,14 @@
                               foreach($syouhinn as $sy){
                                 if($sy->id == $s->syouhinn_id){                          
                           ?>
-                          <tr>
-                          <th class="product syouhin">{{$sy->syouhinn_name}}</th>
-                          <th class="product syouhin">{{$s->color}}</th>
-                          <th class="product syouhin">{{$s->saizu}}</th>
-                          <th class="product syouhin">{{$t->suuryou}}</th>
-                          </tr>
+                          <thead>
+                            <tr class="row">
+                              <th class="col s6">{{$sy->syouhinn_name}}</th>
+                              <th class="col s2">{{$s->color}}</th>
+                              <th class="col s2">{{$s->saizu}}</th>
+                              <th class="col s2">{{$t->suuryou}}</th>
+                            </tr>
+                          </thead>
                           <?php
                                 }
                              }
