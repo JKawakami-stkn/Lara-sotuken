@@ -13,7 +13,7 @@
 
   <nav class="noprint light-blue">
     <div class="nav-wrapper">
-      <a href="{{ action('TopController@show')}}" class="brand-logo">Logo</a>
-      <a href="user.html" class="user-name">User</a>
+      <a href="{{ action('TopController@show')}}" class="brand-logo">発注管理(仮)</a>
+      <!-- <a href="user.html" class="user-name">User</a> -->
     </div>
   </nav>

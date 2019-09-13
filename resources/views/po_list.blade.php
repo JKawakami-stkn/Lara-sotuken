@@ -65,7 +65,7 @@ use Illuminate\Database\Eloquent\Model;
 
       <!-- ドロップダウン -->
       <ul id='dropdown' class='dropdown-content'>
-        <li><a id="check" href=""><i class="material-icons">content_paste</i>check</a></li>
+        <!-- <li><a id="check" href=""><i class="material-icons">content_paste</i>check</a></li> -->
         <li><a id="print" href=""><i class="material-icons">local_printshop</i>print</a></li>
         <li><a id="edit" href=""><i class="material-icons">edit</i>edit</a></li>
       </ul>
