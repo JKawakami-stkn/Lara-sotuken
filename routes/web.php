@@ -28,8 +28,8 @@ Route::get('/edit_vendor/{torihikisaki_id?}','EditVendorController@show');
 Route::post('/edit_vendor','EditVendorController@edit');
 
 //ログイン
-Route::get('/','LoginController@show');
-//Route::post();
+// Route::get('/','LoginController@show');
+Route::get('/','TopController@show');
 
 //会社単位での発注書確認画面
 Route::get('/po_by_vendor','PoByVendorController@show');
