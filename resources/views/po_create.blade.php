@@ -13,14 +13,15 @@
 <div class="main">
 <div class="container">
 <!-- ページ名 -->
-<h4 class="page-title blue-text text-lighten-3">発注書新規作成</h4>
+<h4 class="page-title blue-text text-lighten-3">販売会新規登録</h4>
 
 <!-- 入力フォーム -->
 <form action="{{ action('PoCreateController@store')}}" method="post">
 {{ csrf_field() }}
 <ul class="collection">
-<li class="collection-item">注文書の名前　：
-    <div class="input-field col s10">
+<li class="collection-item">販売会の名前　：
+    <div class="input-field col s10" style="color:red">
+    
         @if($errors->has('tyumonsyo'))
             <?php $tyumonsyo_errors = $errors->get('tyumonsyo');?>
                 @foreach ($tyumonsyo_errors as $tyumonsyo_error)
@@ -32,20 +33,24 @@
     </div>
 </li>
 <li class="collection-item">　期　日　：　
+        <div style="color:red;">
         @if($errors->has('deadline'))
             <?php $deadline_errors = $errors->get('deadline')?>
                 @foreach ($deadline_errors as $deadline_error)
-                    <tr><th>ERROR </th><td>{{$deadline_error}}</td></tr>
+                    <tr><th>ERROR </th><td>{{$deadline_error}}</td></tr><br>
                 @endforeach
         @endif
+        </div>
     <input type="text" id="datepicker" name="deadline" class="datepicker" value="{{old('deadline')}}" placeholder="20◯◯-0◯-◯◯[半角]"  ></li>
 <li class="collection-item">　対　象　：
 <div class="class-checkbox">
-@if($errors->has('kumi'))
-            <?php $kumi_errors = $errors->get('kumi')?>
-                @foreach ($kumi_errors as $kumi_error)
-                    <tr><th>ERROR </th><td>{{$kumi_error}}</td></tr>
-                @endforeach
+    <div style="color:red;">
+        @if($errors->has('kumi'))
+        <?php $kumi_errors = $errors->get('kumi')?>
+        @foreach ($kumi_errors as $kumi_error)
+        <tr><th>ERROR </th><td>{{$kumi_error}}</td></tr>
+        @endforeach
+    </div>
 @endif
 <p>
 <label>

@@ -7,12 +7,6 @@
 <link type="text/css" rel="stylesheet" href="{{asset('/css/overall.css')}}">
 @stop
 
-<?php 
-    var_dump($errors->all()); 
-    if(!$errors->all()){
-        var_dump("_________________");
-    }
-?>
 @section('content')
 <!-- メインコンテンツ -->
 <div class="main">
