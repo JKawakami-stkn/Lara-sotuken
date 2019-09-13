@@ -12,7 +12,6 @@
   <div class="container">
     <!-- ページ名 -->
     <h4 class="page-title blue-text text-lighten-3">注文内容確認</h4>
-    <?php var_dump($kids_collection[0]["KIDS_NM_KJ"]) ?>
     <!--基本的にここだけを書き換える-->
     <!--<tr>
       <th class="product_list name_list">真木よう子</th>
@@ -25,8 +24,9 @@
     <ul class="collapsible">
       <!-- 指定されたクラスの園児の一覧を表示する -->
       @foreach($kids_collection as $k)
+      <?php //var_dump($k) ?>
         <li>
-          <div class="collapsible-header"><i class="material-icons">chevron_right</i><?php print_r($k["KIDS_NM_KJ"]) ?></div>
+          <div class="collapsible-header"><i class="material-icons">chevron_right</i>{{$k['KIDS_NM_KJ']}}</div>
           <div class="collapsible-body">
             <ul class="collection with-header">
                 <table class="products-table">
@@ -39,6 +39,7 @@
                 </table>
 
                 <table class="products-table hogosya-table">
+                  <!-- ここに購入商品のループを記述する　-->
                     <tr>
                       <th class="product syouhin">連絡帳</th>
                       <th class="product syouhin">300</th>
@@ -60,14 +61,12 @@
   </div>
 @stop
 
-
-
   <!--  Scripts-->
 @section('addJS')
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/box.js"></script>
+  <script src="{{asset('js/materialize.js')}}"></script>
+  <script src="{{asset('js/init.js')}}"></script>
+  <script src="{{asset('js/box.js')}}"></script>
 
   <script>
     // 折り畳み
@@ -86,7 +85,5 @@
       var elems = document.querySelectorAll('select');
       var instances = M.FormSelect.init(elems);
     });
-
-
   </script>
 @stop
