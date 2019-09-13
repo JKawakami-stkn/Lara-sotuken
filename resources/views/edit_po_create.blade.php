@@ -30,13 +30,14 @@
         hannbaikai_name}}">
 
     @else
-
+    <div style="color:red;">
     @if($errors->has('tyumonsyo'))
             <?php $tyumonsyo_errors = $errors->get('tyumonsyo');?>
                 @foreach ($tyumonsyo_errors as $tyumonsyo_error)
                     <tr><th>ERROR </th><td>{{$tyumonsyo_error}}</td></tr>
                 @endforeach
     @endif
+    </div>
         <input id="tyumonsyo_name"  name="tyumonsyo" type="text" class="validate" value="{{old('tyumonsyo')}}">
  @endif
 
@@ -48,22 +49,26 @@
     @if(!($errors->all()))
         <input type="text" id="datepicker" name="deadline" class="datepicker" value="{{$hannbaikai->simekiri}}" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
     @else
+        <div style="color:red;">
         @if($errors->has('deadline'))
                 <?php $deadline_errors = $errors->get('deadline')?>
                     @foreach ($deadline_errors as $deadline_error)
                         <tr><th>ERROR </th><td>{{$deadline_error}}</td></tr>
                     @endforeach
         @endif
+        </div>
          <input type="text" id="datepicker" name="deadline" class="datepicker" value="{{old('deadline')}}" placeholder="20◯◯-0◯-◯◯[半角]" ></li>
     @endif
 <li class="collection-item">　対　象　：
 <div class="class-checkbox">
+<div style="color:red;">
 @if($errors->has('kumi'))
             <?php $kumi_errors = $errors->get('kumi')?>
                 @foreach ($kumi_errors as $kumi_error)
                     <tr><th>ERROR </th><td>{{$kumi_error}}</td></tr>
                 @endforeach
  @endif
+ </div>
 <p>
 <label>
 <p>
@@ -94,14 +99,14 @@
 </li>
 <li class="collection-item">　用  品　：
 <div class="yohin-checkbox">
-
+<div style="color:red;">
 @if($errors->has('syouhinn'))
             <?php $syouhinn_errors = $errors->get('syouhinn')?>
                 @foreach ($syouhinn_errors as $syouhinn_error)
                     <tr><th>ERROR </th><td>{{$syouhinn_error}}</td></tr>
                 @endforeach
 @endif
-
+</div>
 <!--
 <select>
 <option value="" disabled selected >絞り込み</option>
