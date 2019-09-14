@@ -31,6 +31,24 @@
                     </div>
                 </div>
             </div>
+            <!--　サイズ -->
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="syouhinn_size" name="syouhinn_size" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
+                        <label for="size">サイズ　*ないなら省略してください</label>
+                    </div>
+                </div>
+            </div>
+            <!--　カラー -->
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="syouhinn_color" name="syouhinn_color" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
+                        <label for="color">カラー　*ないなら省略してください</label>
+                    </div>
+                </div>
+            </div>
 
             <!-- 区分セレクター -->
             <div class="input-field col s9">
