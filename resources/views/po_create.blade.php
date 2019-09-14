@@ -69,13 +69,14 @@
 <li class="collection-item">　用  品　：
 <div class="yohin-checkbox">
 
+ <div style="color:red;">
 @if($errors->has('syouhinn'))
             <?php $syouhinn_errors = $errors->get('syouhinn')?>
                 @foreach ($syouhinn_errors as $syouhinn_error)
                     <tr><th>ERROR </th><td>{{$syouhinn_error}}</td></tr>
                 @endforeach
         @endif
-<p>
+</div>
 
 <!--
 <select>
