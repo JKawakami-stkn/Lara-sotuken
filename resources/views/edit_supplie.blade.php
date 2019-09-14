@@ -36,10 +36,9 @@
             <div class="input-field col s9">
                 <select name="kubunn_id">
                     <option value="0" disabled selected></option>
-                    <option value="1">文房具</option>
-                    <option value="2">教材・教具</option>
-                    <option value="3">出版物</option>
-                    <option value="4">その他</option>
+                    @foreach($kubunn as $d)
+                    <option value={{$d->id}}>{{$d->kubunn_name}}</option>
+                    @endforeach
                 </select>
                 <label>区分</label>
             </div>

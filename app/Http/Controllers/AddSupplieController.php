@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\models\Torihikisaki;
 use App\models\Syouhinn;
 use App\models\Sku;
+use App\models\Kubunn;
 
 use \App\User;
 use DB;
@@ -23,8 +24,11 @@ class AddSupplieController extends Controller
       // 業者リストで表示するデータを取得
       $md = new Torihikisaki();
       $data = $md->getData();
+      $Kubunn = new Kubunn();
+      $kubunn = $Kubunn->get();
 
-      return view('add_supplie',['data'=>$data]);
+
+      return view('add_supplie',compact('data','kubunn'));
   }
 
 

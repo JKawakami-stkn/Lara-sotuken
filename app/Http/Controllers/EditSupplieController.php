@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // インスタンス化するモデルを指定
 use App\models\Syouhinn;
 use App\models\Torihikisaki;
+use App\models\Kubunn;
 
 use \App\User;
 use DB;
@@ -20,12 +21,14 @@ class EditSupplieController extends Controller
       // Torihikisakiモデルのインスタンスを作成
       $md = new Syouhinn();
       $md_1 = new Torihikisaki();
+      $Kubunn = new Kubunn();
 
       // データ取得
       $data = $md->getData($syouhinn_id);
       $data_1 = $md_1->getData();
+      $kubunn = $Kubunn->get();
 
-      return view('edit_supplie',['data'=>$data],['data_1'=>$data_1]);
+      return view('edit_supplie',compact('data','data_1','kubunn'));
     }
 
 
