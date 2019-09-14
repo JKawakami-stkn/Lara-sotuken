@@ -56,12 +56,14 @@ class PoCheckDeliveryController extends Controller
     // var_dump($request->input('zidou_id'));
     $tyuumonnmeisais_id = $request->input('tyuumonnmeisais_id');
 
-    foreach($tyuumonnmeisais_id as $tyuumonnmeisai_id){
-      DB::table('tyuumonnmeisai')
-        ->where('id', $tyuumonnmeisai_id)
-        ->update(['h_flg' => 1]);
+    if($tyuumonnmeisais_id != null){
+      foreach ($tyuumonnmeisais_id as $tyuumonnmeisai_id) {
+        DB::table('tyuumonnmeisai')
+            ->where('id', $tyuumonnmeisai_id)
+            ->update(['h_flg' => 1]);
+        }
     }
-
+    
     $posliscon = new PoListController();
     return  $posliscon->show();
 
