@@ -15,7 +15,8 @@
       <div class="container">
         <!-- ページ名 -->
         <h4 class="page-title blue-text text-lighten-3">保護者入力</h4>
-        <h4>2019年4月 物品購入</h4>
+        <h4>{{$hannbaikai->toArray()[0]["sakuseibi"]}}        {{$hannbaikai->toArray()[0]["hannbaikai_name"]}}</h4>
+        <h4> 締め切り       {{$hannbaikai->toArray()[0]["simekiri"]}}</h4>
 
         <form action="{{ action('PoFillInController@store')}}" method="post">
           {{csrf_field()}}
