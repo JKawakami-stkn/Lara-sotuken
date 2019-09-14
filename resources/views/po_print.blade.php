@@ -20,7 +20,7 @@
           <table class="products-table">
             <tr>
               <th class="product gyousya top">取引先</th>
-              <th class="product gyousya top">受注品</th>
+              <th class="product gyousya top">発注品</th>
             </tr>
           </table>
 
