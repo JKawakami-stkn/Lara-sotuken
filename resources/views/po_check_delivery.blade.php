@@ -105,6 +105,11 @@
                 if(results[d].color != null){
                   syouhinn_name += '　　' +results[d].color
                 }
+                if(results[d].h_flg == 0){
+                  c_box = '<input type="checkbox" class="filled-in" name="tyuumonnmeisais_id[]" value="' + results[d].tyuumonn_meisai_id + '" />';
+                }else{
+                  c_box = '<input type="checkbox" checked="checked" disabled="disabled" class="filled-in" name="tyuumonnmeisais_id[]" value="'+results[d] . tyuumonn_meisai_id+'" />';
+                }
 
                 $('#p-table').append(
                   '<tr>' +
@@ -113,7 +118,7 @@
                     '<td>'+ results[d].suuryou　+'個</td>' +
                     '<td>' +
                       '<label>'+
-                        '<input type="checkbox" class="filled-in" name="tyuumonnmeisais_id[]" value="' + results[d].tyuumonn_meisai_id + '" />' +
+                        c_box +
                         '<span></span>' +
                       '</label>' +
                     '</td>' +

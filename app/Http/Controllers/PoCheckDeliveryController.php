@@ -25,13 +25,11 @@ class PoCheckDeliveryController extends Controller
 
   }
 
-  // TODO:取引先編集画面のエラーを修正, hattyuumeisaiテーブルのtyuumonn_idを削除, hattyuumeisaiテーブルのzidou_idの型を修正
-
   // ajax
   public function load(Request $request, $zidou_id){
 
     $data = DB::table('tyuumonnmeisai')
-      ->select('tyuumonnmeisai.id as tyuumonn_meisai_id', 'syouhinn.syouhinn_name', 'sku.saizu', 'sku.color', 'tyuumonnmeisai.suuryou')
+      ->select('tyuumonnmeisai.id as tyuumonn_meisai_id', 'syouhinn.syouhinn_name', 'sku.saizu', 'sku.color', 'tyuumonnmeisai.suuryou', 'h_flg')
       ->leftjoin('sku', 'tyuumonnmeisai.sku_id', '=', 'sku.id')
       ->leftjoin('syouhinn', 'sku.syouhinn_id', '=', 'syouhinn.id')
       ->where('tyuumonnmeisai.zidou_id', '=', $zidou_id)
