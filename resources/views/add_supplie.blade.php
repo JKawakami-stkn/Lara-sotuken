@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="syouhinn_name" name="syouhinn_name" class="materialize-textarea"></textarea>
-                        <label for="name">商品名</label>
+                        <label for="name">用品名</label>
                     </div>
                 </div>
             </div>

@@ -26,8 +26,8 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <p>商品名</p>
                         <textarea id="name" name="syouhinn_name" class="materialize-textarea">{{$data[0]->syouhinn_name}}</textarea>
+                        <label for="name">用品名</label>
                     </div>
                 </div>
             </div>
