@@ -26,6 +26,7 @@
                     <div class="input-field col s12">
 
                         <textarea id="syouhinn_name" name="syouhinn_name" class="materialize-textarea"></textarea>
+<<<<<<< HEAD
                         <label for="name">商品名</label>
                         @if($errors->has('syouhinn_name'))
                           <?php $syouhinnName_errors = $errors->get('syouhinn_name');?>
@@ -36,6 +37,9 @@
                             </tr>
                           @endforeach
                         @endif
+=======
+                        <label for="name">用品名</label>
+>>>>>>> 73340bd84dd09d196a684b6a91fa32ba17bf9100
                     </div>
                 </div>
             </div>
@@ -66,10 +70,9 @@
 
                 <select id="kubun_id" name="kubunn_id">
                     <option value="0" disabled selected></option>
-                    <option value="1">文房具</option>
-                    <option value="2">教材・教具</option>
-                    <option value="3">出版物</option>
-                    <option value="4">その他</option>
+                    @foreach($kubunn as $d)
+                    <option value={{$d->id}}>{{$d->kubunn_name}}</option>
+                    @endforeach
                 </select>
                 <label>区分</label>
                 @if($errors->has('kubunn_id'))

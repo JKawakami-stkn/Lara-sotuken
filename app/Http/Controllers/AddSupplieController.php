@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\models\Torihikisaki;
 use App\models\Syouhinn;
 use App\models\Sku;
+use App\models\Kubunn;
 
 use \App\User;
 use DB;
@@ -24,13 +25,20 @@ class AddSupplieController extends Controller
       // 業者リストで表示するデータを取得
       $md = new Torihikisaki();
       $data = $md->getData();
+      $Kubunn = new Kubunn();
+      $kubunn = $Kubunn->get();
 
-      return view('add_supplie',['data'=>$data]);
+
+      return view('add_supplie',compact('data','kubunn'));
   }
 
 
+<<<<<<< HEAD
   public function store(AddSupplieRequest $request){
 
+=======
+  public function store(Request $request){
+>>>>>>> 73340bd84dd09d196a684b6a91fa32ba17bf9100
     $request->session()->regenerateToken(); //F5での更新制御
 
     // 新規インスタンス作成
