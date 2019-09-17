@@ -24,8 +24,18 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
+
                         <textarea id="syouhinn_name" name="syouhinn_name" class="materialize-textarea"></textarea>
                         <label for="name">商品名</label>
+                        @if($errors->has('syouhinn_name'))
+                          <?php $syouhinnName_errors = $errors->get('syouhinn_name');?>
+                          @foreach ($syouhinnName_errors as $syouhinnName_error)
+                            <tr>
+                              <th>ERROR</th>
+                              <td>{{$syouhinnName_error}}</td>
+                            </tr>
+                          @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -33,6 +43,7 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
+
                         <textarea id="syouhinn_size" name="syouhinn_size" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
                         <label for="size">サイズ　*ないなら省略してください</label>
                     </div>
@@ -42,6 +53,7 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
+
                         <textarea id="syouhinn_color" name="syouhinn_color" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
                         <label for="color">カラー　*ないなら省略してください</label>
                     </div>
@@ -51,6 +63,7 @@
 
             <!-- 区分セレクター -->
             <div class="input-field col s9">
+
                 <select id="kubun_id" name="kubunn_id">
                     <option value="0" disabled selected></option>
                     <option value="1">文房具</option>
@@ -59,14 +72,33 @@
                     <option value="4">その他</option>
                 </select>
                 <label>区分</label>
+                @if($errors->has('kubunn_id'))
+                  <?php $kubunnId_errors = $errors->get('kubunn_id');?>
+                  @foreach ($kubunnId_errors as $kubunnId_error)
+                    <tr>
+                      <th>ERROR</th>
+                      <td>{{$kubunnId_error}}</td>
+                    </tr>
+                  @endforeach
+                @endif
             </div>
 
             <!-- 商品単価 -->
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
+
                         <textarea id="tannka" name="tannka" class="materialize-textarea"></textarea>
                         <label for="price">単価</label>
+                        @if($errors->has('tannka'))
+                          <?php $tannka_errors = $errors->get('tannka');?>
+                          @foreach ($tannka_errors as $tannka_error)
+                            <tr>
+                              <th>ERROR</th>
+                              <td>{{$tannka_error}}</td>
+                            </tr>
+                          @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -89,6 +121,7 @@
 
             <!-- 業者セレクター -->
             <div class="input-field col s9">
+
                 <select id="torihikisaki_id" name="torihikisaki_id">
                     <option value="" disabled selected></option>
                     @foreach($data as $d)
@@ -96,6 +129,15 @@
                     @endforeach
                 </select>
                 <label>取引先</label>
+                @if($errors->has('torihikisaki_id'))
+                  <?php $torihikisakiId_errors = $errors->get('torihikisaki_id');?>
+                  @foreach ($torihikisakiId_errors as $torihikisakiId_error)
+                    <tr>
+                      <th>ERROR</th>
+                      <td>{{$torihikisakiId_error}}</td>
+                    </tr>
+                  @endforeach
+                @endif
             </div>
 
             <!-- 登録ボタン -->

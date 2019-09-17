@@ -10,6 +10,7 @@ use App\models\Sku;
 use \App\User;
 use DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddSupplieRequest;
 
 use App\Models\purchased_articl;
 
@@ -28,7 +29,7 @@ class AddSupplieController extends Controller
   }
 
 
-  public function store(Request $request){
+  public function store(AddSupplieRequest $request){
 
     $request->session()->regenerateToken(); //F5での更新制御
 
@@ -56,10 +57,10 @@ class AddSupplieController extends Controller
     if(isset($size) or isset($color)){//isset()はnullならfalseを返す このifに入ったらどちらかに値が入っている
       if(!isset($size) and isset($color)){//色がnullでない
           $sku->storeData2($color, $num);
-        
+
       }elseif(isset($size) and !isset($color)){//サイズがnullでない
           $sku->storeData1($size, $num);
-        
+
       }else{//両方nullでない
           $sku->storeData3($size, $color, $num);
       }
