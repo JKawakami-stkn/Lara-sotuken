@@ -26,8 +26,16 @@
               <tr>
                 <th class="product name top">
                   <div class="input-field col s12">
+                    @if($errors->has("KIDS_ID"))
+                        <?php $ID_error = $errors->get("KIDS_ID");
+                        
+                        ?>
+                        <p style="color:red; margin-bottom:0; margin-top:20px;">{{ $ID_error[0] }}</p>
+                    
+                    @endif
                     <select name="KIDS_ID">
                       <option value="" disabled selected> 名前 </option>
+                      
                       @foreach($kids_collection as $kids)
                       <option  value={{$kids["KIDS_ID"]}}>{{$kids["KIDS_NM_KJ"]}}</option>
                       @endforeach
@@ -59,7 +67,6 @@
                     <td class="col s2">
                       <div class="input-field col s12">
                         <select name="{{$syouhinn['syouhinn_ID']}}[saizu]">
-                          <option value="_" disabled selected> - </option>
                           @foreach($syouhinn["saizu"] as $key => $member)
                           <option value="{{$member}}">{{$member}}</option>
                           @endforeach
@@ -73,7 +80,6 @@
                     <td class="col s2">
                       <div class="input-field col s12">
                         <select name="{{$syouhinn['syouhinn_ID']}}[color]">
-                          <option value="_" disabled selected> - </option>
                           @foreach($syouhinn["color"] as $key => $member)
                           <option value="{{$member}}">{{$member}}</option>
                           @endforeach
