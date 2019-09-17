@@ -16,7 +16,7 @@
         <h4 class="page-title blue-text text-lighten-3">用品情報編集</h4>
 
         <form action="{{ action('EditSupplieController@edit')}}" method="post">
-
+    
             <!-- エラー回避 -->
             {{ csrf_field() }}
 

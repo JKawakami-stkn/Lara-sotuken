@@ -13,7 +13,7 @@ class AddSupplieRequest extends FormRequest
      */
     public function authorize()
     {
-       if($this->path()=='add_supplie')
+       if($this->path()=='add_supplie' || $this->path()=='edit_supplie')
         {
           return true;
         }else
