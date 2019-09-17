@@ -26,7 +26,7 @@
                     <div class="input-field col s12">
 
                         <textarea id="syouhinn_name" name="syouhinn_name" class="materialize-textarea"></textarea>
-<<<<<<< HEAD
+
                         <label for="name">商品名</label>
                         @if($errors->has('syouhinn_name'))
                           <?php $syouhinnName_errors = $errors->get('syouhinn_name');?>
@@ -37,9 +37,7 @@
                             </tr>
                           @endforeach
                         @endif
-=======
-                        <label for="name">用品名</label>
->>>>>>> 73340bd84dd09d196a684b6a91fa32ba17bf9100
+
                     </div>
                 </div>
             </div>
