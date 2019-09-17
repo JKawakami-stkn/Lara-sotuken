@@ -26,9 +26,15 @@
             <!-- 会社名 -->
             <div class="row">
                 <div class="row">
+                    @if($errors->has('torihikisaki_name'))
+                        <?php $torihikisaki_name_errors = $errors->get('torihikisaki_name'); ?>
+                        @foreach($torihikisaki_name_errors as $error)
+                            <p style="color:red; margin-bottom:0; margin-top:20px;">{{ $error }}</p>
+                        @endforeach
+                    @endif
                     <div class="input-field col s12">
                         <p>取引先名</p>
-                        <textarea id="price"  name="torihikisaki_name" class="materialize-textarea">{{$data[0]->torihikisaki_name}}</textarea>
+                        <textarea id="price"  name="torihikisaki_name" class="materialize-textarea">@if(!$errors->all()){{$data[0]->torihikisaki_name}}@else{{old('torihikisaki_name')}}@endif</textarea>
                     </div>
                 </div>
             </div>
@@ -36,9 +42,15 @@
             <!-- 住所 -->
             <div class="row">
                 <div class="row">
+                    @if($errors->has('zyuusyo'))
+                        <?php $zyuusyo_errors = $errors->get('zyuusyo'); ?>
+                        @foreach($zyuusyo_errors as $error)
+                            <p style="color:red; margin-bottom:0; margin-top:20px;">{{ $error }}</p>
+                        @endforeach
+                    @endif
                     <div class="input-field col s12">
                         <p>住所</p>
-                        <textarea id="street_address" name="zyuusyo" class="materialize-textarea">{{$data[0]->zyuusyo}}</textarea>
+                        <textarea id="street_address" name="zyuusyo" class="materialize-textarea">@if(!$errors->all()){{$data[0]->zyuusyo}}@else{{ old('zyuusyo')}}@endif</textarea>
 
                     </div>
                 </div>
@@ -47,9 +59,15 @@
             <!-- 電話番号 -->
             <div class="row">
                 <div class="row">
+                    @if($errors->has('denwabanngou'))
+                        <?php $denwabanngou_errors = $errors->get('denwabanngou'); ?>
+                        @foreach($denwabanngou_errors as $error)
+                            <p style="color:red; margin-bottom:0; margin-top:20px;">{{ $error }}</p>
+                        @endforeach
+                    @endif
                     <div class="input-field col s12">
                         <p>電話番号</p>
-                        <textarea id="phone_number" name="denwabanngou" class="materialize-textarea">{{$data[0]->denwabanngou}}</textarea>
+                        <textarea id="phone_number" name="denwabanngou" class="materialize-textarea">@if(!$errors->all()){{$data[0]->denwabanngou}}@else{{old('denwabanngou')}}@endif</textarea>
                     </div>
                 </div>
             </div>
@@ -58,6 +76,9 @@
             <div class="right-button">
                 <button class="btn waves-effect waves-light" type="submit" name="action">変更</button>
             </div>
+
+            <!-- FIXME: 一時的な措置-->
+            <input type="hidden" name="delete" value="0">
 
         </form>
 

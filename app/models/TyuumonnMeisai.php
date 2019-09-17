@@ -24,7 +24,15 @@ class TyuumonnMeisai extends Model
     //主キーがintでない場合の記述
     // protected $keyType = 'string';
 
+    public function getData($id=null){
+        $query = DB::table($this->table);
 
+        if($id != null) $query->where('id', $id);
+
+        $data = $query->get();
+
+        return $data;
+    }
 
     // DBからデータを取得し返すメソッド
     

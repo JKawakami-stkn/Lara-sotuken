@@ -13,6 +13,9 @@ use App\Models\MWfGroup;
 use App\Models\MKids;
 use App\Models\TKidsGpPosi;
 use App\Models\TyuumonnMeisai;
+use App\Models\Hannbaikai;
+
+use App\Http\Requests\PoFillInRequest;
 
 class PoFillInController extends Controller{  
 
@@ -23,6 +26,8 @@ class PoFillInController extends Controller{
     $MWfGroup = new MWfGroup();
     $Mkids = new MKids();
     $TKidsGpPosi = new TKidsGpPosi();
+    $Hannbaikai = new Hannbaikai();
+    
 
     
     
@@ -92,20 +97,16 @@ class PoFillInController extends Controller{
     // \Debugbar::info($syouhinn_collection);
     // \Debugbar::info($kids_collection);
 
-
-  
+    $hannbaikai = $Hannbaikai::select('sakuseibi','simekiri','hannbaikai_name')->where('id',$hannbaikai_id)->get();
+    
 
     
 
 
-
-
-    
-    // \Debugbar::info($syouhinn);
-    return view('po_fill_in',compact('syouhinn_collection','kids_collection','hannbaikai_id'));
+    return view('po_fill_in',compact('syouhinn_collection','kids_collection','hannbaikai_id','hannbaikai'));
   }
 
-  public function store(Request $request){
+  public function store(PoFillInRequest $request){
     $request->session()->regenerateToken(); //f5の更新対策
     $sku = new sku();
     $TyuumonnMeisai = new TyuumonnMeisai();

@@ -26,8 +26,26 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <p>商品名</p>
                         <textarea id="name" name="syouhinn_name" class="materialize-textarea">{{$data[0]->syouhinn_name}}</textarea>
+                        <label for="name">用品名</label>
+                    </div>
+                </div>
+            </div>
+            <!--　サイズ -->
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="syouhinn_size" name="syouhinn_size" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
+                        <label for="size">サイズ　*ないなら省略してください</label>
+                    </div>
+                </div>
+            </div>
+            <!--　カラー -->
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="syouhinn_color" name="syouhinn_color" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
+                        <label for="color">カラー　*ないなら省略してください</label>
                     </div>
                 </div>
             </div>
@@ -36,10 +54,9 @@
             <div class="input-field col s9">
                 <select name="kubunn_id">
                     <option value="0" disabled selected></option>
-                    <option value="1">文房具</option>
-                    <option value="2">教材・教具</option>
-                    <option value="3">出版物</option>
-                    <option value="4">その他</option>
+                    @foreach($kubunn as $d)
+                    <option value={{$d->id}}>{{$d->kubunn_name}}</option>
+                    @endforeach
                 </select>
                 <label>区分</label>
             </div>

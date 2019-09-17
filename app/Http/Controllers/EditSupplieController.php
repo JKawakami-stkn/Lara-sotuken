@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 // インスタンス化するモデルを指定
 use App\models\Syouhinn;
 use App\models\Torihikisaki;
+use App\models\Kubunn;
+use App\models\Sku;
+
 
 use \App\User;
 use DB;
@@ -20,12 +23,14 @@ class EditSupplieController extends Controller
       // Torihikisakiモデルのインスタンスを作成
       $md = new Syouhinn();
       $md_1 = new Torihikisaki();
+      $Kubunn = new Kubunn();
 
       // データ取得
       $data = $md->getData($syouhinn_id);
       $data_1 = $md_1->getData();
+      $kubunn = $Kubunn->get();
 
-      return view('edit_supplie',['data'=>$data],['data_1'=>$data_1]);
+      return view('edit_supplie',compact('data','data_1','kubunn'));
     }
 
 
@@ -35,7 +40,45 @@ class EditSupplieController extends Controller
 
         // 新規インスタンス作成
         $syouhinn = new Syouhinn;
+        $Sku = new Sku();
 
+        
+        // ----------------------------------------------追加------------------------------------------------
+        // 新規インスタンス作成
+        // $syouhinn = new Syouhinn;
+        $sku = new Sku;
+        $size = null;
+        $color = null;
+        $sku::where("syouhinn_id",$request->id)->delete();
+        if($request->syouhinn_size != null){
+          $size = explode(",",$request->syouhinn_size);
+        }
+        if($request->syouhinn_color != null){
+          $color = explode(",",$request->syouhinn_color);
+        }
+        //商品データを先に登録した後、登録した商品は一番最後の行に追加されるため、その行数を引っ張ってきたらそれが商品IDとなる想定をして書き進める
+
+
+        //レコード数取得
+        $num = $request->id;
+        //Debugbar::addMessage($size);
+
+
+        if(isset($size) or isset($color)){//isset()はnullならfalseを返す このifに入ったらどちらかに値が入っている
+          if(!isset($size) and isset($color)){//色がnullでない
+              $sku->storeData2($color, $num);
+            
+          }elseif(isset($size) and !isset($color)){//サイズがnullでない
+              $sku->storeData1($size, $num);
+            
+          }else{//両方nullでない
+              $sku->storeData3($size, $color, $num);
+          }
+        }else{
+          $sku->storeData4($num);
+        }
+
+        // -------------------------------------------------------------------------------------------------
         // DB更新
         $syouhinn->updateData($request);
 

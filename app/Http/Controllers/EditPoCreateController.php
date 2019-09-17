@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\models\Hannbaikai;
 use App\models\Hannbaikumi;
 use App\models\Hannbaisyouhinn;
+use App\Http\Requests\PoCreateRequest;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,7 @@ class EditPoCreateController extends Controller
       }
     
     
-      public function store(Request $request){
+      public function store(PoCreateRequest $request){
         
         $request->session()->regenerateToken(); //F5での更新制御
         

@@ -35,18 +35,20 @@
                     <!--<span>F　A　X　：　</span><span>{{$d->torihikisaki_name}}</span>-->
                     <span>
                         <div class="operation-buttons-box left-button">
-                            <a class="waves-effect waves-light btn" href="{{ action('EditVendorController@show',$d->id) }}">編集</a>
-                            <!-- 削除ボタンの追加 -->
-                            <form action="{{ action('DeleteVendorController@editFlag')}}" method="post">
-                                @csrf
-                                <!-- 削除フォームから削除フラグを立てる会社をeditFlagメソッドに渡す -->
-                                <input type="hidden" name="torihikisaki_name" value={{$d ->torihikisaki_name}}>
-                                <input type="hidden" name="zyuusyo" value={{$d ->zyuusyo}}>
-                                <input type="hidden" name="denwabanngou" value={{$d ->denwabanngou}}>
-                                <input type="hidden" name="delete" value={{$d ->delete}}>
-                                <input type="hidden" name="id" value={{$d ->id}}>
-                                <button class="btn waves-effect waves-light" type="submit" name="action">削除</button>
-                            </form>
+                            <div class="row">
+                                <a class="waves-effect waves-light btn col s5" href="{{ action('EditVendorController@show',$d->id) }}">編集</a>
+                                <!-- 削除ボタンの追加 -->
+                                <form action="{{ action('DeleteVendorController@editFlag')}}" method="post">
+                                    @csrf
+                                    <!-- 削除フォームから削除フラグを立てる会社をeditFlagメソッドに渡す -->
+                                    <input type="hidden" name="torihikisaki_name" value={{$d ->torihikisaki_name}}>
+                                    <input type="hidden" name="zyuusyo" value={{$d ->zyuusyo}}>
+                                    <input type="hidden" name="denwabanngou" value={{$d ->denwabanngou}}>
+                                    <input type="hidden" name="delete" value={{$d ->delete}}>
+                                    <input type="hidden" name="id" value={{$d ->id}}>
+                                    <button class="btn waves-effect waves-light col s5 right" type="submit" name="action">削除</button>
+                                </form>
+                            </div>
                         </div>
                     </span>
                 </div>

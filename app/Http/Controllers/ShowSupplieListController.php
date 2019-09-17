@@ -22,7 +22,7 @@ class ShowSupplieListController extends Controller
                     select('syouhinn.id as syouhinn_id','syouhinn.syouhinn_name', 'syouhinn.tannka', 'syouhinn.kubunn_id',
                             'torihikisaki.id as torihikisaki_id', 'torihikisaki.torihikisaki_name')->
                         leftjoin('torihikisaki', 'syouhinn.torihikisaki_id', '=', 'torihikisaki.id') -> get();
-
+      \Debugbar::info($data);
       return view('show_supplie_list',['data'=>$data]);
   }
 

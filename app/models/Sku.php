@@ -91,20 +91,11 @@ class Sku extends Model
 
 
     // データを編集する
-    public function updateData(Request $request) {
+    public function DeleteAndStore($syouhinn_id,$syouhinn_size,$syouhinn_color) {
+      $Sku = new $Sku();
+      $Sku::where("syouhinn_id",$syouhinn_id)->delete();
+      
 
-      // 指定のデータを更新
-      $sku = sku::where('id', $request->id)->first();
-
-      // インスタンスに受け取った値を格納
-      $sku->sku_name = $request->sku_name;
-      $sku->tannka = $request->tannka;
-      // TODO:区分名、取引先名の取得
-      $sku->kubunn_id = $request->kubunn_id;
-      $sku->torihikisaki_id = $request->torihikisaki_id;
-
-      // データベースのデータを更新
-      $sku->save();
     }
 
 
