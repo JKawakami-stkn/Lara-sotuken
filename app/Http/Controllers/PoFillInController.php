@@ -15,6 +15,8 @@ use App\Models\TKidsGpPosi;
 use App\Models\TyuumonnMeisai;
 use App\Models\Hannbaikai;
 
+use App\Http\Requests\PoFillInRequest;
+
 class PoFillInController extends Controller{  
 
   public function show($hannbaikai_id, $kumi_id){
@@ -104,7 +106,7 @@ class PoFillInController extends Controller{
     return view('po_fill_in',compact('syouhinn_collection','kids_collection','hannbaikai_id','hannbaikai'));
   }
 
-  public function store(Request $request){
+  public function store(PoFillInRequest $request){
     $request->session()->regenerateToken(); //f5の更新対策
     $sku = new sku();
     $TyuumonnMeisai = new TyuumonnMeisai();
