@@ -13,6 +13,7 @@ use \App\User;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\purchased_articl;
+use App\Http\Requests\AddSupplieRequest;
 
 class EditSupplieController extends Controller
 
@@ -34,7 +35,7 @@ class EditSupplieController extends Controller
     }
 
 
-    public function edit(Request $request){
+    public function edit(AddSupplieRequest $request){
 
         $request->session()->regenerateToken(); //F5での更新制御
 
