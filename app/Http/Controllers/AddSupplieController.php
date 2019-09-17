@@ -33,12 +33,9 @@ class AddSupplieController extends Controller
   }
 
 
-<<<<<<< HEAD
   public function store(AddSupplieRequest $request){
 
-=======
-  public function store(Request $request){
->>>>>>> 73340bd84dd09d196a684b6a91fa32ba17bf9100
+
     $request->session()->regenerateToken(); //F5での更新制御
 
     // 新規インスタンス作成
