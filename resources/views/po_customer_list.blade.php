@@ -5,11 +5,11 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ asset('css/overall.css') }}">
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/sticky_footer.css') }}">
 @stop
 
 @section('content')
-  <div class="container">
+  <div class="container" style="margin-bottom:1000px;">
     <!-- ページ名 -->
     <h4 class="page-title blue-text text-lighten-3">注文内容確認</h4>
 
