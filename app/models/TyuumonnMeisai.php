@@ -43,7 +43,7 @@ class TyuumonnMeisai extends Model
         foreach($para as $key => $value){
             $sku = new sku();
             $tyuumonnmeisai = new TyuumonnMeisai();
-            if($value["suuryou"] != 0){
+            if($value["suuryou"] != 0 and $value["suuryou"] != null){
                 if(array_key_exists("size",$para) and array_key_exists("color",$para)){//array_key_existsはないならfalse
                     //両方ある
                     $sku_id = $sku::select("id")->where("syouhinn_id",$key)->where("saizu",$value["size"])->where("color",$value["color"])->get();

@@ -22,16 +22,18 @@
 
         <!-- 折り畳み -->
         <ul class="collapsible">
-            @foreach($data as $d)
+            @foreach($syouhinn_all_info as $d)
               <li>
-                <div class="collapsible-header"><i class="material-icons">chevron_right</i>{{$d->syouhinn_name}}</div>
+                <div class="collapsible-header"><i class="material-icons">chevron_right</i>{{$d["syouhinn_name"]}}</div>
                 <div class="collapsible-body">
-                  <span>価　格</span><span>　{{$d->tannka}}円</span><br><br>
-                  <span>発注先</span><span>　{{$d->torihikisaki_name}}</span><br><br>
-                  <span>商品区分</span><span>　No.{{$d->kubunn_id}}</span><br><br>
+                  <span>価　格 : </span><span>{{$d["tannka"]}}円</span><br><br>
+                  <span>発注先 : </span><span>{{$d["torihikisaki_name"]}}</span><br><br>
+                  <span>色 : </span><span>{{$d["color"]}}</span><br><br>
+                  <span>サイズ : </span><span>{{$d["saizu"]}}</span><br><br>
+                  <span>商品区分 : </span><span>{{$d["kubunn_name"]}}</span><br><br>
                   <span>
                     <div class="operation-buttons-box left-button">
-                      <a class="waves-effect waves-light btn" href="{{ action('EditSupplieController@show',$d->syouhinn_id) }}">編集</a>
+                      <a class="waves-effect waves-light btn" href="{{ action('EditSupplieController@show',$d['syouhinn_id']) }}">編集</a>
                     </div>
                   </span>
                 </div>

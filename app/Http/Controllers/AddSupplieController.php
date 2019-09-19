@@ -46,8 +46,14 @@ class AddSupplieController extends Controller
     if($request->syouhinn_size != null){
       $size = explode(",",$request->syouhinn_size);
     }
+    if(count($size) == 1){
+      $size = explode("、",$size[0]);
+    }
     if($request->syouhinn_color != null){
       $color = explode(",",$request->syouhinn_color);
+    }
+    if(count($color) == 1){
+      $color = explode("、",$color[0]);
     }
     //商品データを先に登録した後、登録した商品は一番最後の行に追加されるため、その行数を引っ張ってきたらそれが商品IDとなる想定をして書き進める
 
