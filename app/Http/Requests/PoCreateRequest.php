@@ -34,7 +34,7 @@ class PoCreateRequest extends FormRequest
     public function messages()
     {
         return [
-            'tyumonsyo.required'          =>     '注文書を必ず入力してください',
+            'tyumonsyo.required'          =>     '販売会名を必ず入力してください',
             'tyumonsyo.string'            =>     '文字列で入力してください',
             'deadline.date'               =>     '2◯◯◯-◯◯-◯◯の形式で入力してください',
             'deadline.required'           =>     '期日を必ず入力して下さい',
