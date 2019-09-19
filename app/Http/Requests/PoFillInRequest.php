@@ -14,7 +14,6 @@ class PoFillInRequest extends FormRequest
     public function authorize()
     {  
         if($this->path() == "po_fill_in"){
-            
             return true;
         }else{
             return false;

@@ -20,14 +20,16 @@
             <!-- エラー回避 -->
             {{ csrf_field() }}
 
-            <input type="hidden" name="id" value="{{$data[0]->id}}">
+            <input type="hidden" name="id" value="{{$syouhinn_info["syouhinn_id"]}}">
+    
 
             <!--　商品名 -->
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="name" name="syouhinn_name" class="materialize-textarea">{{$data[0]->syouhinn_name}}</textarea>
+                        <textarea id="name" name="syouhinn_name" class="materialize-textarea">{{$syouhinn_info["syouhinn_name"]}}</textarea>
                         <label for="name">用品名</label>
+                        
                     </div>
                 </div>
             </div>
@@ -35,7 +37,7 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="syouhinn_size" name="syouhinn_size" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
+                        <textarea id="syouhinn_size" name="syouhinn_size" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください">{{$syouhinn_info["saizu"]}}</textarea>
                         <label for="size">サイズ　*ないなら省略してください</label>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="syouhinn_color" name="syouhinn_color" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください"></textarea>
+                        <textarea id="syouhinn_color" name="syouhinn_color" class="materialize-textarea"placeholder="複数ある場合はカンマ（,）区切りで入力してください">{{$syouhinn_info["color"]}}</textarea>
                         <label for="color">カラー　*ないなら省略してください</label>
                     </div>
                 </div>
@@ -53,19 +55,18 @@
             <!-- 区分セレクター -->
             <div class="input-field col s9">
                 <select name="kubunn_id">
-                    <option value="0" disabled selected></option>
-                    @foreach($kubunn as $d)
+                    <option value="{{$syouhinn_info['kubunn_id']}}">{{$syouhinn_info["kubunn_name"]}}</option>
+                    @foreach($kubunn_all as $d)
                     <option value={{$d->id}}>{{$d->kubunn_name}}</option>
                     @endforeach
                 </select>
                 <label>区分</label>
             </div>
-
             <!-- 商品単価 -->
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="tannka" name="tannka" class="materialize-textarea">{{$data[0]->tannka}}</textarea>
+                        <textarea id="tannka" name="tannka" class="materialize-textarea">{{$syouhinn_info["tannka"]}}</textarea>
                         <label for="price">単価</label>
                     </div>
                 </div>
@@ -87,8 +88,8 @@
             <!-- 業者セレクター -->
             <div class="input-field col s9">
                 <select name="torihikisaki_id">
-                    <option value="" disabled selected></option>
-                    @foreach($data_1 as $d)
+                    <option value="{{$syouhinn_info['torihikisaki_id']}}">{{$syouhinn_info["torihikisaki_name"]}}</option>
+                    @foreach($torihikisaki_all as $d)
                         <option value="{{$d->id}}">{{$d->torihikisaki_name}}</option>
                     @endforeach
 
